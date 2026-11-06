@@ -1,0 +1,69 @@
+/* Rows, labels and controls in Chronos account settings. */
+.ps-detail-sections { min-width: 0; }
+.ps-detail-section { border-top: 1px solid #e9edf3; padding: 21px 0 19px; }
+.ps-section-heading {
+  display: flex; align-items: center; gap: 9px; margin-bottom: 13px;
+  color: #828b9c; font-size: 14px; font-weight: 700; letter-spacing: 0;
+}
+.ps-section-heading svg { color: #a2a9b9; }
+.ps-info-row {
+  display: grid; grid-template-columns: minmax(125px, 1fr) minmax(160px, 1.13fr);
+  align-items: center; min-height: 44px; gap: 14px; padding: 5px 0;
+  color: #31394b; font-size: 14px;
+}
+.ps-info-name { font-weight: 600; color: #333b4d; }
+.ps-info-static, .ps-info-value { min-width: 0; color: #384052; font-size: 14px; }
+.ps-info-static { display: inline-flex; align-items: center; gap: 9px; justify-content: flex-start; }
+.ps-info-static.ps-dim { color: #9ba4b1; }
+.ps-info-value input, .ps-info-select {
+  display: block; width: 100%; min-width: 0; border-radius: 8px;
+  border: 1px solid transparent; outline-offset: 0;
+  background: transparent; color: #343c51; font: inherit; font-size: 14px;
+  padding: 8px 10px; margin-left: -10px; transition: border-color .16s, background .16s;
+}
+.ps-info-value input:hover, .ps-info-select:hover { background: #f7f9fc; }
+.ps-info-value input:focus, .ps-info-select:focus { background: #fff; border-color: #e6c0a5; outline: 2px solid #ffead9; }
+.ps-info-value input::placeholder { color: #a9b0bc; }
+.ps-info-value small { display: block; color: #99a3b4; font-size: 13px; }
+.ps-info-select { width: 100%; max-width: 220px; cursor: pointer; }
+.ps-small-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: 7px; padding: 5px 9px; font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+.ps-pill-green { background: #e9f9ef; color: #27885b; }
+.ps-pill-peach { background: #fff1e6; color: #d68747; }
+.ps-pill-blue { background: #e9f3ff; color: #6099dd; }
+.ps-section-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.ps-section-row .ps-section-heading { margin-bottom: 5px; }
+.ps-section-desc { color: #9aa3b2; font-size: 13px; margin-bottom: 19px; }
+.ps-add-button {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px;
+  border: 1px solid #e6eaf0; border-radius: 9px; background: #fff;
+  font-weight: 700; color: #5d6778; font-size: 13px; white-space: nowrap;
+}
+.ps-add-button:hover { background: #fff5ed; border-color: #ffd8bd; }
+.ps-calendar-items { border-top: 1px solid #edf0f5; }
+.ps-calendar-item {
+  display: flex; align-items: center; gap: 14px;
+  min-height: 72px; border-bottom: 1px solid #edf0f5;
+}
+.ps-calendar-color { flex: 0 0 15px; width: 15px; height: 15px; border-radius: 5px; }
+.ps-calendar-open { display: flex; min-width: 0; flex: 1; align-items: flex-start; flex-direction: column; gap: 5px; text-align: left; }
+.ps-calendar-open strong { font-size: 14px; font-weight: 700; }
+.ps-calendar-open small { color: #9aa3b2; font-size: 13px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ps-calendar-open:hover strong { color: #e18543; }
+.ps-mini-action { color: #99a4b3; padding: 7px; border-radius: 8px; flex: 0 0 auto; }
+.ps-mini-action:hover { color: #e88a48; background: #fff4eb; }
+.ps-hint { padding: 16px 0; color: #8b96a6; font-size: 13px; line-height: 1.65; }
+.ps-swatch-row i { display: inline-block; width: 16px; height: 16px; border-radius: 5px; }
+.ps-swatch-row i:nth-child(1) { background: #f1a775; }
+.ps-swatch-row i:nth-child(2) { background: #80b6ed; }
+.ps-swatch-row i:nth-child(3) { background: #a794f2; }
+.ps-swatch-row i:nth-child(4) { background: #7cc9a4; }
+
+@media (max-width: 570px) {
+  .ps-info-row { grid-template-columns: 1fr; gap: 0; padding: 7px 0; }
+  .ps-info-value input, .ps-info-select { margin-left: -10px; }
+  .ps-calendar-item { gap: 9px; }
+  .ps-calendar-item .ps-small-pill { display: none; }
+}

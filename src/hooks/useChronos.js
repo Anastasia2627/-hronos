@@ -9,7 +9,7 @@ export function useChronos() {
   const [profile, setProfile] = useStored('chronos-profile-v1', { name: 'Anastasiia', email: 'hello@chronos.demo', role: 'Creative workspace' });
   const [page, setPage] = useState('overview');
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [view, setView] = useState('month');
+  const [view, setView] = useStored('chronos-view-v1', 'month');
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [showFilters, setShowFilters] = useState(false);

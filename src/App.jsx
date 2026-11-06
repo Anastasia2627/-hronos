@@ -51,7 +51,7 @@ export default function App() {
           {page === 'schedule' && <SchedulePage events={filteredEvents} date={selectedDate}
             onDate={setSelectedDate} colorFor={colorFor} onEvent={openEvent}
             onNew={() => openEvent(null, selectedDate, '09:00', 'page')} />}
-          {page === 'settings' && <SettingsPage profile={profile} onProfile={setProfile} calendars={calendars}
+          {page === 'settings' && <SettingsPage profile={profile} onProfile={setProfile} onCalendarView={setView} calendars={calendars} onToggleCal={toggleCalendar}
             onEditCal={setCalendarDraft} onNewCal={() => setCalendarDraft({ name: '', description: '', color: CAL_COLORS[0], visible: true })}
             onToast={setToast} />}
           {page === 'create-event' && eventDraft && <CreateEventPage eventDraft={eventDraft}

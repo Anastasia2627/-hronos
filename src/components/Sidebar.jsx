@@ -28,7 +28,7 @@ export function Sidebar({ sidebarOpen, sidebarCollapsed, setSidebarCollapsed, ca
     <div className="sidebar-bottom">
       <div className="sidebar-soft-card sidebar-copy"><span className="soft-spark"><Sparkles size={18} /></span><strong>A little more clarity.</strong><p>Make space for what matters today.</p></div>
       <button className={`nav-link ${page === 'settings' ? 'nav-active' : ''}`} onClick={() => selectPage('settings')}><Settings2 size={19} /><span className="sidebar-copy">Settings</span></button>
-      <div className="sidebar-person"><span className="avatar">{initials(profile.name)}</span><span className="sidebar-person-text sidebar-copy"><strong>{profile.name}</strong><small>Personal account</small></span><button className="icon-button sidebar-copy" title="Profile settings" onClick={() => selectPage('settings')}><MoreHorizontal size={18} /></button></div>
+      <div className="sidebar-person"><span className="avatar">{profile.avatar ? <img src={profile.avatar} alt="" /> : initials(profile.name)}</span><span className="sidebar-person-text sidebar-copy"><strong>{profile.name}</strong><small>Personal account</small></span><button className="icon-button sidebar-copy" title="Profile settings" onClick={() => selectPage('settings')}><MoreHorizontal size={18} /></button></div>
     </div>
   </aside>);
 }

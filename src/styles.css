@@ -7,9 +7,11 @@
 @import './styles/calendar.css';
 @import './styles/schedule.css';
 @import './styles/settings.css';
+@import './styles/profile-settings.css';
 @import './styles/forms.css';
 @import './styles/responsive.css';
 @import './styles/skeleton.css';
 @import './styles/task-workspace.css';
 @import './styles/task-views.css';
 @import './styles/task-timeline.css';
+@import './styles/profile-details.css';

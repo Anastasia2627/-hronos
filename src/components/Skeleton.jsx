@@ -9,6 +9,7 @@ function Card() {
 }
 
 export function PageSkeleton({ page = 'overview', view = 'board' }) {
+  if (page === 'settings') return <div className="ps-skeleton" role="status" aria-label="Loading settings" aria-busy="true"><div className="ps-skeleton-tabs"><Bar size="tiny" /><Bar size="tiny" /><Bar size="tiny" /></div><div className="ps-skeleton-controls"><Bar size="short" /><Bar size="short" /></div><div className="ps-skeleton-cover" /><div className="ps-skeleton-content"><div className="ps-skeleton-avatar" /><Bar size="short" /><Bar size="medium" />{Array.from({ length: 9 }, (_, i) => <div key={i} className="ps-skeleton-line"><Bar size="short" /><Bar size="medium" /></div>)}</div><span className="sr-only">Loading profile settings</span></div>;
   const board = page === 'tasks' && view === 'board';
   const list = page === 'tasks' && view === 'list';
   return <div className="page-skeleton" aria-busy="true" aria-label="Loading content" role="status">
