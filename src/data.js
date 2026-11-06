@@ -55,4 +55,3 @@ export const emptyEvent = (date = dateKey(today)) => ({ title:'',date,start:'09:
 export const emptyTask = () => ({title:'',description:'',stage:'todo',date:dateKey(today),color:'#9478e9',initials:'AK',priority:'Medium'});
 export const getWeekNumber = (d) => { const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const dayNum = date.getUTCDay() || 7; date.setUTCDate(date.getUTCDate() + 4 - dayNum); const yearStart = new Date(Date.UTC(date.getUTCFullYear(),0,1)); return Math.ceil((((date - yearStart)/86400000)+1)/7); };
 export function monthCells(date) { const first = startOfWeek(startOfMonth(date)); return Array.from({length:42}, (_,i)=>offsetDate(first,i)); }
-export function useStoredState() {} // Initial values are read and maintained in App.jsx; no server calls.
