@@ -4,7 +4,7 @@ import { initials } from '../lib/shared.jsx';
 
 const TITLES = {
   overview: 'Home', calendar: 'Calendar', tasks: 'Tasks', projects: 'Projects',
-  team: 'Team space', schedule: 'Daily schedule', settings: 'Settings', 'create-event': 'New event'
+  team: 'Team space', schedule: 'Daily schedule', profile: 'My profile', settings: 'Settings', 'create-event': 'New event'
 };
 
 export function Topbar({ setSidebarOpen, page, search, setSearch, notificationsOpen, setNotificationsOpen, overdue, profile, selectPage }) {
@@ -19,7 +19,7 @@ export function Topbar({ setSidebarOpen, page, search, setSearch, notificationsO
       <div className="topbar-notify"><button className="icon-button header-action" aria-label="Notifications" title="Notifications" onClick={() => setNotificationsOpen(!notificationsOpen)}><Bell size={19}/>{overdue > 0 && <span className="notification-dot"/>}</button>
         {notificationsOpen && <div className="notification-panel"><div className="notification-heading"><strong>Notifications</strong></div><p>{overdue ? `${overdue} overdue ${overdue === 1 ? 'task' : 'tasks'}` : 'No overdue tasks.'}</p><button className="text-button" onClick={() => {selectPage('tasks');setNotificationsOpen(false);}}>Open tasks <ArrowRight size={15}/></button></div>}
       </div>
-      <button className="topbar-avatar" title="My profile" aria-label="Open profile" onClick={() => selectPage('settings')}>{profile.avatar ? <img src={profile.avatar} alt=""/> : initials(profile.name)}</button>
+      <button className="topbar-avatar" title="My profile" aria-label="Open profile" onClick={() => selectPage('profile')}>{profile.avatar ? <img src={profile.avatar} alt=""/> : initials(profile.name)}</button>
     </div>
   </header>;
 }

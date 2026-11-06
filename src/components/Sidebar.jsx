@@ -39,7 +39,7 @@ export function Sidebar({ sidebarOpen, sidebarCollapsed, setSidebarCollapsed, ca
     </div>}
     <div className="sidebar-bottom">
       <button className={`nav-link ${page === 'settings' ? 'nav-active' : ''}`} onClick={() => selectPage('settings')} aria-label="Settings" data-hint="Settings"><Settings2 size={20}/><span className="sidebar-copy">Settings</span></button>
-      <button className="sidebar-person" onClick={() => selectPage('settings')} aria-label="Edit profile" data-hint="My profile">
+      <button className={`sidebar-person ${page === 'profile' ? 'person-active' : ''}`} onClick={() => selectPage('profile')} aria-label="Edit profile" data-hint="My profile">
         <span className="avatar">{profile.avatar ? <img src={profile.avatar} alt=""/> : initials(profile.name)}</span>
         <span className="sidebar-person-text sidebar-copy"><strong>{profile.name}</strong><small>My profile</small></span>
       </button>

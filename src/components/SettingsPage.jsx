@@ -1,72 +1,37 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Camera, ChevronRight, Home, RotateCcw, Save, Settings2, UserRound } from 'lucide-react';
-import { initials } from '../lib/shared.jsx';
-import { ProfileBanner } from './settings/ProfileBanner.jsx';
-import { ProfileGeneral } from './settings/ProfileGeneral.jsx';
+import React, { useEffect, useState } from 'react';
+import { CalendarDays, ChevronRight, Settings2, UserRound, RotateCcw, Save, ArrowUpRight } from 'lucide-react';
 import { ProfileCalendars } from './settings/ProfileCalendars.jsx';
 import { ProfilePreferences } from './settings/ProfilePreferences.jsx';
 
-const TABS = [{ id: 'general', label: 'General' }, { id: 'calendars', label: 'Calendars' }, { id: 'preferences', label: 'Preferences' }];
-const DEFAULTS = { defaultView: 'month' };
+const VIEWS = ['day', 'week', 'month', 'year'];
 
-export function SettingsPage({ profile, onProfile, calendars, onEditCal, onNewCal, onToggleCal, onCalendarView, onToast }) {
-  const [form, setForm] = useState({ ...DEFAULTS, ...profile });
-  const [active, setActive] = useState('general');
-  const photoInput = useRef(null);
-  useEffect(() => setForm({ ...DEFAULTS, ...profile }), [profile]);
-  const update = changes => setForm(previous => ({ ...previous, ...changes }));
-  const changed = JSON.stringify(form) !== JSON.stringify({ ...DEFAULTS, ...profile });
-
-  const save = (event) => {
-    event?.preventDefault();
-    if (!form.name?.trim()) return onToast('Please enter a display name');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email || '')) return onToast('Please enter a valid email address');
-    const next = { ...form, name: form.name.trim(), email: form.email.trim() };
-    onProfile(next);
-    onCalendarView?.(next.defaultView);
-    onToast('Profile changes saved locally');
-  };
-  const discard = () => { setForm({ ...DEFAULTS, ...profile }); onToast('Changes discarded'); };
-  const uploadPhoto = (event) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    event.target.value = '';
-    if (!file.type.startsWith('image/')) return onToast('Choose an image file');
-    if (file.size > 900_000) return onToast('Choose a photo smaller than 900 KB');
-    const reader = new FileReader();
-    reader.onload = () => update({ avatar: reader.result });
-    reader.onerror = () => onToast('Could not read this photo');
-    reader.readAsDataURL(file);
+export function SettingsPage({ profile, onProfile, calendars, onEditCal, onNewCal, onToggleCal, onCalendarView, onToast, onNavigate, onWelcome }) {
+  const [defaultView, setDefaultView] = useState(profile.defaultView || 'month');
+  useEffect(() => setDefaultView(profile.defaultView || 'month'), [profile.defaultView]);
+  const changed = defaultView !== (profile.defaultView || 'month');
+  const save = event => {
+    event.preventDefault();
+    if (!VIEWS.includes(defaultView)) return;
+    onProfile({ ...profile, defaultView });
+    onCalendarView(defaultView);
+    onToast('Calendar preferences saved');
   };
 
-  return <div className="ps-page">
-    <div className="ps-frame">
-      <div className="ps-tabs" role="tablist" aria-label="Settings sections">
-        {TABS.map(tab => <button key={tab.id} role="tab" aria-selected={active === tab.id} className={`ps-tab ${active === tab.id ? 'is-active' : ''}`} onClick={() => setActive(tab.id)}>{tab.label}</button>)}
+  return <section className="settings-page" aria-label="Settings">
+    <header className="account-heading settings-heading"><span className="account-eyebrow">WORKSPACE</span><h1>Settings</h1><p>Make Chronos work your way.</p></header>
+    <div className="settings-layout">
+      <div className="settings-settings-card">
+        <form onSubmit={save}>
+          <div className="settings-panel-heading"><span className="settings-heading-icon"><Settings2 size={22}/></span><div><h2>Calendar preferences</h2><p>Choose how your calendar opens.</p></div></div>
+          <ProfilePreferences form={{defaultView}} update={changes => { if (changes.defaultView) setDefaultView(changes.defaultView); }}/>
+          <div className="settings-form-actions"><button type="button" className="ps-btn ps-btn-outline" disabled={!changed} onClick={() => setDefaultView(profile.defaultView || 'month')}><RotateCcw size={16}/> Cancel</button><button type="submit" className="ps-btn ps-btn-save" disabled={!changed}><Save size={16}/> Save preferences</button></div>
+        </form>
       </div>
-      <form onSubmit={save}>
-        <div className="ps-toolbar">
-          <div className="ps-breadcrumb"><Home size={17} /><ChevronRight size={15} /><Settings2 size={16} /><ChevronRight size={15} /><span>{TABS.find(tab => tab.id === active)?.label} information</span></div>
-          {active !== 'calendars' && <div className="ps-buttons"><button className="ps-btn ps-btn-outline" type="button" onClick={discard}><RotateCcw size={15} /> Discard</button><button className="ps-btn ps-btn-save" type="submit"><Save size={15} /> Save changes</button></div>}
-        </div>
-        <ProfileBanner />
-        <div className="ps-inner">
-          <div className="ps-identity">
-            <div className="ps-photo-wrap">
-              <div className="ps-photo">{form.avatar ? <img src={form.avatar} alt="Your profile" /> : <span>{initials(form.name)}</span>}</div>
-              <button type="button" className="ps-camera" aria-label="Upload profile photo" title="Upload profile photo" onClick={() => photoInput.current?.click()}><Camera size={15} /></button>
-              <input ref={photoInput} type="file" accept="image/*" onChange={uploadPhoto} className="ps-file-input" aria-label="Profile photo" />
-            </div>
-            <div className="ps-profile-name"><h1>{form.name || 'Your name'}</h1><p>{form.email || 'email@example.com'}</p></div>
-            <div className="ps-profile-chips"><span><UserRound size={14} /> Personal account</span></div>
-            {form.avatar && <button type="button" className="ps-remove-photo" onClick={() => update({ avatar: '' })}>Remove photo</button>}
-          </div>
-          {active === 'general' && <ProfileGeneral form={form} update={update} calendars={calendars} />}
-          {active === 'calendars' && <ProfileCalendars calendars={calendars} onEditCal={onEditCal} onNewCal={onNewCal} onToggleCal={onToggleCal} />}
-          {active === 'preferences' && <ProfilePreferences form={form} update={update} />}
-          {changed && active !== 'calendars' && <p className="ps-unsaved" role="status">You have unsaved changes.</p>}
-        </div>
-      </form>
+      <div className="settings-settings-card">
+        <div className="settings-panel-heading"><span className="settings-heading-icon is-blue"><CalendarDays size={22}/></span><div><h2>My calendars</h2><p>Colors, visibility and calendar names.</p></div></div>
+        <ProfileCalendars calendars={calendars} onEditCal={onEditCal} onNewCal={onNewCal} onToggleCal={onToggleCal}/>
+      </div>
     </div>
-  </div>;
+    <div className="settings-bottom-links"><button onClick={() => onNavigate('profile')}><UserRound size={19}/><span><strong>My profile</strong><small>Edit your personal details and photo</small></span><ChevronRight size={18}/></button><button onClick={onWelcome}><ArrowUpRight size={19}/><span><strong>Welcome page</strong><small>Preview the public Chronos homepage</small></span><ChevronRight size={18}/></button></div>
+  </section>;
 }

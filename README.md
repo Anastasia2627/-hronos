@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Open the local URL Vite prints, usually `http://localhost:5173`. To check the build: `npm run build`.
+Open the local URL Vite prints, usually `http://localhost:5173`. First visit opens the public welcome page; **Explore Chronos** opens the local demo. To check the build: `npm run build`.
 
 ## Find your way around
 
@@ -18,11 +18,13 @@ Open the local URL Vite prints, usually `http://localhost:5173`. To check the bu
 - **Tasks** — Board, List and Timeline, with collapsible filters. Create, edit, delete, move and bulk-update tasks.
 - **Projects** — project Kanban view and list view, with the same underlying tasks.
 - **More views** — Team space and Daily schedule. Both use the same saved tasks/events as the main screens.
-- **Settings** — profile, calendar management and preferences.
+- **My profile** — open from the avatar in the top bar or sidebar; update name, email, bio and avatar.
+- **Settings** — calendar display preferences and calendar management, separated from personal profile. The Welcome page link lets you preview the public home again.
+- **Public welcome** — landing page inspired by a clean editorial hero, with a preview of calendar, events and tasks. No login is implied; it is a frontend-only demonstration.
 
 ## What works / what is missing
 
-Local event/task/calendar CRUD, calendar views, filtering and profile preferences are implemented. The main personal calendar cannot be deleted or hidden. A decorative holiday example is not a complete regional holiday service.
+Local event/task/calendar CRUD, calendar views, a compact month picker, filtering, profile fields and calendar preferences are implemented. The main personal calendar cannot be deleted or hidden. A decorative holiday example is not a complete regional holiday service.
 
 **Not implemented:** real sign-up/sign-in, backend API, MongoDB/Mongoose, Docker, email invitations, real collaboration and permissions, region-aware public holidays or actual reminder notifications. Participant emails in events are not sent. See [docs/REQUIREMENTS_AUDIT.md](docs/REQUIREMENTS_AUDIT.md) for a requirement-by-requirement check against the PDF.
 
@@ -60,3 +62,7 @@ Status labels use the existing To do / In progress / In review / Done stages and
 ## UI design principles
 
 The interface follows [AGENTS.md](AGENTS.md), [the UX book playbook](docs/UX_BOOK_PLAYBOOK.md), the [redesign notes](docs/UX_REDESIGN_CHANGELOG.md), and [file structure guide](docs/UI_CODE_STRUCTURE.md). The frontend uses local browser data; true authentication, shared invitations and the API remain future work.
+
+## Interface decisions (November 2026)
+
+The first two new references inspired the event date picker and the compact left calendar/agenda beside the calendar grid. The public landing uses the third reference’s generous typography and floating elements but replaces health/messaging concepts with an interactive calendar preview. Multi-day meeting ranges, sign-up, email sending and AI meeting notes are not part of this frontend-only prototype; the UI does not pretend they work.

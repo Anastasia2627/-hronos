@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TODAY, CAL_COLORS, emptyTask } from './data.js';
 import { useChronos } from './hooks/useChronos.js';
 import { Sidebar } from './components/Sidebar.jsx';
@@ -10,10 +10,15 @@ import { ProjectBoardPage } from './components/ProjectBoardPage.jsx';
 import { TeamSpacePage } from './components/TeamSpacePage.jsx';
 import { SchedulePage } from './components/SchedulePage.jsx';
 import { SettingsPage } from './components/SettingsPage.jsx';
+import { ProfilePage } from './components/ProfilePage.jsx';
+import { LandingPage } from './components/LandingPage.jsx';
 import { CreateEventPage } from './components/CreateEventPage.jsx';
 import { AppDialogs } from './components/AppDialogs.jsx';
 
 export default function App() {
+  const [entered, setEntered] = useState(() => { try { return localStorage.getItem('chronos-demo-entered-v1') === 'yes'; } catch { return false; } });
+  const openDemo = () => { try { localStorage.setItem('chronos-demo-entered-v1', 'yes'); } catch {} setEntered(true); };
+  const openWelcome = () => { setEntered(false); window.scrollTo({ top: 0, behavior: 'instant' }); };
   const state = useChronos();
   const { calendars, tasks, profile, setProfile, page, selectedDate, setSelectedDate, view, setView,
     search, setSearch, typeFilter, setTypeFilter, showFilters, setShowFilters, eventDraft, taskFilter,
@@ -21,6 +26,8 @@ export default function App() {
     setSidebarCollapsed, notificationsOpen, setNotificationsOpen, overdue, selectPage, toggleCalendar,
     setCalendarDraft, setTaskDraft, openEvent, changeViewPage, colorFor, moveTask, moveTaskLane, moveTasks, todayEvents,
     closeEvent, saveEvent, setConfirmDelete, setToast } = state;
+
+  if (!entered) return <LandingPage onEnter={openDemo} />;
 
   return (
     <div className={`app-shell ${sidebarCollapsed ? 'sidebar-small' : ''}`}>
@@ -48,9 +55,10 @@ export default function App() {
           {page === 'schedule' && <SchedulePage events={filteredEvents} date={selectedDate}
             onDate={setSelectedDate} colorFor={colorFor} onEvent={openEvent}
             onNew={() => openEvent(null, selectedDate, '09:00', 'page')} />}
+          {page === 'profile' && <ProfilePage profile={profile} onProfile={setProfile} calendars={calendars} onToast={setToast} />}
           {page === 'settings' && <SettingsPage profile={profile} onProfile={setProfile} onCalendarView={setView} calendars={calendars} onToggleCal={toggleCalendar}
             onEditCal={setCalendarDraft} onNewCal={() => setCalendarDraft({ name: '', description: '', color: CAL_COLORS[0], visible: true })}
-            onToast={setToast} />}
+            onToast={setToast} onNavigate={selectPage} onWelcome={openWelcome} />}
           {page === 'create-event' && eventDraft && <CreateEventPage eventDraft={eventDraft}
             calendars={calendars} saveEvent={saveEvent} closeEvent={closeEvent} setConfirmDelete={setConfirmDelete} />}
         </div>

@@ -7,7 +7,7 @@ export const HOME_APPS = [
   { key: 'projects', name: 'Project board', description: 'Work by status', icon: LayoutGrid, tone: 'periwinkle' },
   { key: 'schedule', name: 'My day', description: 'Your daily agenda', icon: CalendarClock, tone: 'peach' },
   { key: 'team', name: 'Team space', description: 'Shared work preview', icon: UsersRound, tone: 'mint' },
-  { key: 'settings', name: 'Settings', description: 'Profile and calendars', icon: Settings2, tone: 'slate' },
+  { key: 'settings', name: 'Settings', description: 'Calendar preferences', icon: Settings2, tone: 'slate' },
 ];
 
 export function HomeApps({ onPage }) {

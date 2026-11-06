@@ -1,0 +1,13 @@
+/* Account information lives in Profile; product preferences live in Settings. */
+.account-heading{min-width:0}.account-eyebrow{display:block;font-size:12px;letter-spacing:.11em;font-weight:850;color:var(--orange);margin-bottom:5px}
+.account-heading h1{font-size:clamp(24px,2.8vw,32px);font-weight:850;color:#202b40}.account-heading>p{font-size:14px;color:#7d8b9f;margin-top:7px}
+.ps-profile-name h2{font-size:22px;font-weight:850;color:#202b40}.settings-page{max-width:1120px;margin:auto;animation:ui-enter 220ms ease both}
+.settings-heading{margin:3px 0 27px}.settings-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.settings-settings-card{background:white;border:1px solid #e9edf4;border-radius:19px;padding:27px;box-shadow:var(--shadow-sm);min-width:0}
+.settings-panel-heading{display:flex;align-items:center;gap:14px;margin-bottom:22px}.settings-panel-heading h2{font-size:19px;font-weight:850}.settings-panel-heading p{color:#818d9e;font-size:13px;margin-top:4px}
+.settings-heading-icon{display:grid;place-items:center;width:47px;height:47px;flex:none;border-radius:14px;background:#fff1e5;color:var(--orange)}.settings-heading-icon.is-blue{background:#e7f2ff;color:#287fd6}
+.settings-settings-card .ps-detail-section:first-child{border-top:0;padding-top:0}.settings-settings-card .ps-detail-section{padding-bottom:9px}.settings-settings-card .ps-info-row{grid-template-columns:minmax(100px,1fr) minmax(120px,1fr)}
+.settings-settings-card .ps-info-row .ps-info-name{font-size:14px}.settings-form-actions{border-top:1px solid #edf0f4;display:flex;align-items:center;justify-content:flex-end;gap:10px;padding-top:20px;margin-top:7px}
+.settings-bottom-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}.settings-bottom-links button{display:flex;align-items:center;gap:14px;text-align:left;border:1px solid #e9edf4;border-radius:15px;padding:18px 20px;background:#fff;color:#5f7190;transition:transform .2s,box-shadow .2s}.settings-bottom-links button:hover{transform:translateY(-2px);box-shadow:var(--shadow-card)}.settings-bottom-links span{display:grid;gap:3px;flex:1}.settings-bottom-links strong{font-size:14px;color:#25344a}.settings-bottom-links small{font-size:13px;color:#8591a2}.settings-bottom-links button>svg:last-child{color:#a7b2c0}
+@media(max-width:900px){.settings-layout{grid-template-columns:1fr}.settings-settings-card{padding:24px}.settings-bottom-links{grid-template-columns:1fr}}
+@media(max-width:540px){.settings-settings-card{padding:17px}.settings-settings-card .ps-info-row{grid-template-columns:1fr}.settings-form-actions .ps-btn{padding:0 12px}.ps-toolbar{align-items:flex-start}.ps-buttons{width:100%;justify-content:flex-start}}
