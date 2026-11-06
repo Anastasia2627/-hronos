@@ -5,16 +5,16 @@ import { HomeFocus } from './home/HomeFocus.jsx';
 
 export function Overview({ date, name, events, tasks, colorFor, onNewEvent, onOpenEvent, onOpenTask, onPage, onAddTask }) {
   const firstName = (name || 'there').trim().split(' ')[0];
+  const dateLabel = date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   return <div className="home-page">
     <section className="home-welcome">
-      <div className="home-welcome-copy"><span className="home-hello-mark">✳</span>
-        <h1>Make today yours.</h1>
-        <p>Welcome back, {firstName}. Pick up where you left off.</p>
+      <div className="home-welcome-copy">
+        <h1>Welcome back, {firstName}.</h1>
+        <p>{dateLabel} · Find a plan or create something new.</p>
       </div>
-      <div className="home-orbit" aria-hidden="true"><span className="home-orbit-a"/><span className="home-orbit-b"/><span className="home-orbit-c"/></div>
       <HomeCommand tasks={tasks} onPage={onPage} onTask={onOpenTask} onNewEvent={onNewEvent} onAddTask={onAddTask}/>
     </section>
-    <HomeApps onPage={onPage} onNewEvent={onNewEvent} onAddTask={onAddTask}/>
+    <HomeApps onPage={onPage}/>
     <HomeFocus date={date} events={events} tasks={tasks} colorFor={colorFor}
       onEvent={onOpenEvent} onTask={onOpenTask} onPage={onPage}/>
   </div>;

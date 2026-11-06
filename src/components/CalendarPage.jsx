@@ -16,6 +16,5 @@ export function CalendarPage({ selectedDate, setSelectedDate, view, setView, fil
       {(view === 'week' || view === 'day') && <TimeCalendar date={selectedDate} days={view === 'day' ? 1 : 7} events={filteredEvents} colorFor={colorFor} onBlank={(d, h) => openEvent(null, d, h)} onEvent={openEvent} onDate={(d) => { setSelectedDate(d); setView('day'); }} />}
       {view === 'year' && <YearCalendar date={selectedDate} events={filteredEvents} colorFor={colorFor} onMonth={(d) => { setSelectedDate(d); setView('month'); }} />}
     </section>
-    <div className="calendar-footer"><span>Tip: click an empty day or time to add an event</span></div>
   </div>);
 }

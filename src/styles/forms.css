@@ -264,3 +264,6 @@
     opacity: 1;
   }
 }
+/* Error/selection states should not rely solely on a color cue. */
+.field:focus-within>span{color:#365776}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#ed965e;box-shadow:0 0 0 3px #f9e9dd}

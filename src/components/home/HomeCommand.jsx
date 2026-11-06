@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Search, ArrowUpRight, X, ListTodo, CalendarPlus2, ListPlus, Sparkles } from 'lucide-react';
+import { Search, ArrowUpRight, X, ListTodo, CalendarPlus2, ListPlus } from 'lucide-react';
 import { HOME_APPS } from './HomeApps.jsx';
 
 export function HomeCommand({ tasks, onPage, onTask, onNewEvent, onAddTask }) {
@@ -8,8 +8,7 @@ export function HomeCommand({ tasks, onPage, onTask, onNewEvent, onAddTask }) {
   const results = useMemo(() => {
     if (!term) return [];
     const pages = HOME_APPS.filter(app => `${app.name} ${app.description}`.toLowerCase().includes(term))
-      .map(app => ({ id: app.key, label: app.name, sub: 'Workspace', icon: app.icon,
-        select: () => app.key === 'new-event' ? onNewEvent() : app.key === 'new-task' ? onAddTask() : onPage(app.key) }));
+      .map(app => ({ id: app.key, label: app.name, sub: 'Section', icon: app.icon, select: () => onPage(app.key) }));
     const found = tasks.filter(task => `${task.title} ${task.description || ''}`.toLowerCase().includes(term))
       .slice(0, 5).map(task => ({ id: task.id, label: task.title, sub: 'Task', icon: ListTodo,
         select: () => onTask({ ...task }) }));
@@ -17,9 +16,9 @@ export function HomeCommand({ tasks, onPage, onTask, onNewEvent, onAddTask }) {
   }, [term, tasks, onPage, onTask, onNewEvent, onAddTask]);
   const launch = item => { item.select(); setQuery(''); };
   return <div className="home-command-wrap">
-    <form className="home-command" role="search" onSubmit={e => { e.preventDefault(); if (results[0]) launch(results[0]); else if (!term) onPage('calendar'); }}>
+    <form className="home-command" role="search" onSubmit={e => { e.preventDefault(); if (results[0]) launch(results[0]); }}>
       <div className="home-command-input"><Search size={21}/>
-        <input aria-label="Search pages and tasks" placeholder="What would you like to plan?" value={query}
+        <input aria-label="Search pages and tasks" placeholder="Search tasks or open a section…" value={query}
           onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'Escape') setQuery(''); }} autoComplete="off"/>
         {query && <button type="button" onClick={() => setQuery('')} aria-label="Clear search"><X size={18}/></button>}
       </div>
@@ -28,8 +27,8 @@ export function HomeCommand({ tasks, onPage, onTask, onNewEvent, onAddTask }) {
           <button type="button" onClick={onNewEvent}><CalendarPlus2 size={16}/> New event</button>
           <button type="button" onClick={onAddTask}><ListPlus size={16}/> New task</button>
         </div>
-        <span className="home-command-hint"><Sparkles size={15}/> Your space</span>
-        <button className="home-command-submit" type="submit" aria-label="Search"><ArrowUpRight size={20}/></button>
+        
+        <button className="home-command-submit" type="submit" aria-label="Open search result" disabled={!results.length}><ArrowUpRight size={20}/></button>
       </div>
     </form>
     {term && <div className="home-results" role="region" aria-label="Search results">

@@ -2,7 +2,6 @@
 @import './styles/sidebar.css';
 @import './styles/topbar.css';
 @import './styles/common.css';
-@import './styles/overview.css';
 @import './styles/tasks.css';
 @import './styles/calendar.css';
 @import './styles/schedule.css';
@@ -20,17 +19,8 @@
 @import './styles/team-space.css';
 @import './styles/team-streams.css';
 
-@import './styles/ux-cleanup.css';
 
 @import './styles/home.css';
 @import './styles/adaptive-pills.css';
-@import './styles/sidebar-expand.css';
-
-@import './styles/shell-polish.css';
-@import './styles/home-polish.css';
-@import './styles/board-polish.css';
-@import './styles/home-responsive.css';
-
-@import './styles/brand-refresh.css';
-@import './styles/home-vibrant.css';
-@import './styles/interaction-motion.css';
+@import './styles/design-system.css';
+@import './styles/motion.css';

@@ -1,87 +1,32 @@
-/* Prefer locally installed licensed Gilroy; Manrope keeps a similar shape elsewhere. */
-@font-face {
-  font-family: 'Gilroy';
-  src: local('Gilroy'), local('Gilroy Regular'), local('Gilroy-Regular');
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Foundation tokens: one source of truth for Chronos colors and typography. */
+@font-face { font-family: Gilroy; src:local('Gilroy'),local('Gilroy-Regular'); font-style:normal; font-weight:400; font-display:swap; }
+@font-face { font-family: Gilroy; src:local('Gilroy SemiBold'),local('Gilroy-Semibold'); font-style:normal; font-weight:600; font-display:swap; }
+@font-face { font-family: Gilroy; src:local('Gilroy Bold'),local('Gilroy-Bold'); font-style:normal; font-weight:700 900; font-display:swap; }
 :root {
-  font-family: 'Gilroy', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 15px;
-  color: #242a3b;
-  background: #f6f8fc;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  --ink: #242a3b;
-  --muted: #6a7689;
-  --line: #e8edf4;
-  --soft: #f6f8fc;
-  --orange: #f18b47;
-  --orange-strong: #ec7d35;
-  --orange-soft: #fff3e9;
-  --blue: #69a9ed;
-  --blue-soft: #edf7ff;
-  --purple: #9378e8;
-  --purple-soft: #f2edff;
-  --green: #4bba82;
-  --green-soft: #eaf9f0;
-  --sidebar-width: 264px;
+  font-family:Gilroy,Manrope,Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:16px;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;
+  --ink:#1e2a3d;--muted:#606d80;--muted-soft:#8290a1;--line:#e5eaf1;
+  --soft:#f6f8fc;--surface:#fff;--surface-raised:#fff;
+  --orange:#f47b36;--orange-strong:#d95b1e;--orange-soft:#fff0e5;
+  --blue:#247dd4;--blue-soft:#e6f3ff;
+  --purple:#774ee0;--purple-soft:#f0eaff;
+  --green:#148b66;--green-soft:#e2f6ed;
+  --pink:#d95a85;--pink-soft:#ffe8f0;
+  --amber:#af770f;--amber-soft:#fff3da;
+  --radius-sm:10px;--radius-md:14px;--radius-lg:18px;
+  --shadow-sm:0 2px 8px rgba(27,46,77,.045);
+  --shadow-card:0 8px 24px rgba(35,57,92,.075);
+  --shadow-pop:0 16px 38px rgba(30,47,79,.13);
+  --sidebar-width:238px;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  min-width: 320px;
-}
-
-button,input,select,textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: .65;
-}
-
-button,input,select,textarea {
-  outline-color: #f6b685;
-}
-
-button {
-  border: 0;
-  background: none;
-  color: inherit;
-}
-
-p,h1,h2,h3 {
-  margin: 0;
-}
-
-h1,h2,h3 {
-  letter-spacing: -.035em;
-}
-
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
-  outline: 3px solid #f7bc92;
-  outline-offset: 2px;
-}
-
-::selection {
-  background: #ffe0c7;
-  color: #2d2c2b;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;color:var(--ink);background:var(--soft)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+button:disabled{cursor:not-allowed;opacity:.55}
+p,h1,h2,h3{margin:0}
+h1,h2,h3{letter-spacing:-.03em}
+a{color:inherit}
+:where(button,a,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #ee9b6f;outline-offset:3px}
+::selection{background:#ffe1cc;color:#302318}

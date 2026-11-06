@@ -19,8 +19,8 @@ function TaskCard({ task, compact, selected, onOpen, onChoose }) {
   return <div className={`task-card-wrap ${selected?'task-card-selected':''}`} draggable={!compact} onDragStart={e=>{e.dataTransfer.setData('text/chronos-task',task.id);}}>
     {!compact && onChoose && <input className="task-card-check" type="checkbox" aria-label={`Select ${task.title}`} checked={selected} onChange={()=>onChoose(task.id)} onClick={e=>e.stopPropagation()} />}
     <button className="task-card" style={{'--task-accent':task.color}} onClick={()=>onOpen({...task})}>
-      <div className="task-card-top"><span className="task-card-glyph"><Icon size={18} strokeWidth={2.25}/></span><AdaptivePill status={task.priority.toLowerCase()} compact /></div>
-      <strong>{task.title}</strong><p>{task.description}</p>
+      <div className="task-card-top"><span className="task-card-glyph"><Icon size={18} strokeWidth={2.25}/></span><AdaptivePill status={task.priority.toLowerCase()} /></div>
+      <strong>{task.title}</strong>{task.description && <p>{task.description}</p>}
       <div className="task-bottom"><span className="task-initials">{task.initials}</span><span className="task-due"><CalendarDays size={14}/>{formatShort(parseDate(task.date))}</span>{done&&<CheckCircle2 size={16} className="task-done-icon"/>}</div>
     </button>
   </div>;

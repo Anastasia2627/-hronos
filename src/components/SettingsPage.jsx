@@ -47,7 +47,7 @@ export function SettingsPage({ profile, onProfile, calendars, onEditCal, onNewCa
       <form onSubmit={save}>
         <div className="ps-toolbar">
           <div className="ps-breadcrumb"><Home size={17} /><ChevronRight size={15} /><Settings2 size={16} /><ChevronRight size={15} /><span>{TABS.find(tab => tab.id === active)?.label} information</span></div>
-          <div className="ps-buttons"><button className="ps-btn ps-btn-outline" type="button" onClick={discard}><RotateCcw size={15} /> Discard</button><button className="ps-btn ps-btn-save" type="submit"><Save size={15} /> Save changes</button></div>
+          {active !== 'calendars' && <div className="ps-buttons"><button className="ps-btn ps-btn-outline" type="button" onClick={discard}><RotateCcw size={15} /> Discard</button><button className="ps-btn ps-btn-save" type="submit"><Save size={15} /> Save changes</button></div>}
         </div>
         <ProfileBanner />
         <div className="ps-inner">
@@ -64,7 +64,7 @@ export function SettingsPage({ profile, onProfile, calendars, onEditCal, onNewCa
           {active === 'general' && <ProfileGeneral form={form} update={update} calendars={calendars} />}
           {active === 'calendars' && <ProfileCalendars calendars={calendars} onEditCal={onEditCal} onNewCal={onNewCal} onToggleCal={onToggleCal} />}
           {active === 'preferences' && <ProfilePreferences form={form} update={update} />}
-          {changed && <p className="ps-unsaved" role="status">You have unsaved changes.</p>}
+          {changed && active !== 'calendars' && <p className="ps-unsaved" role="status">You have unsaved changes.</p>}
         </div>
       </form>
     </div>

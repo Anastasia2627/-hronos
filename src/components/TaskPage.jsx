@@ -9,7 +9,7 @@ import { BulkActions } from './BulkActions.jsx';
 
 const rank={High:0,Medium:1,Low:2};
 export function TaskPage({ tasks, filteredTasks, setTaskDraft, moveTask, moveTasks, setConfirmDelete }) {
-  const [view,setView]=useState('board');
+  const [view,setView]=useState('list');
   const [stage,setStage]=useState('all');
   const [priority,setPriority]=useState('all');
   const [sort,setSort]=useState('due');
@@ -19,7 +19,7 @@ export function TaskPage({ tasks, filteredTasks, setTaskDraft, moveTask, moveTas
   const choose=id=>setChosen(current=>current.includes(id)?current.filter(x=>x!==id):[...current,id]);
   const chooseAll=(checked,listed)=>setChosen(current=>checked?[...new Set([...current,...listed.map(t=>t.id)])]:current.filter(id=>!listed.some(t=>t.id===id)));
   const perform=next=>{moveTasks(chosen,next);setChosen([])};
-  return <div className="tasks-page"><PageHeading title="Tasks" />
+  return <div className="tasks-page"><PageHeading title="Tasks" subtitle="Track everything in one place. Switch views when you need to." />
     <TaskToolbar view={view} onView={setView} stage={stage} onStage={setStage} priority={priority} onPriority={setPriority} sort={sort} onSort={setSort} onAdd={()=>setTaskDraft(emptyTask())} total={visible.length}/>
     {view==='board'?<TaskBoard tasks={visible} onOpen={setTaskDraft} onMove={moveTask} onAdd={next=>setTaskDraft({...emptyTask(),stage:next})} chosen={chosen} onChoose={choose}/>:view==='list'?<TaskList tasks={visible} chosen={chosen} onChoose={choose} onChooseAll={chooseAll} onOpen={setTaskDraft} onMove={moveTask}/>:<TaskTimeline tasks={visible} onOpen={setTaskDraft}/>}
     <BulkActions count={chosen.length} onClear={()=>setChosen([])} onReview={()=>perform('review')} onComplete={()=>perform('done')} onDelete={()=>setConfirmDelete({kind:'bulk-task',ids:chosen,label:`${chosen.length} selected tasks`})}/>

@@ -16,7 +16,7 @@ const PRESETS = {
 export function AdaptivePill({status='todo',compact=false,className=''}) {
   const item = PRESETS[status] || PRESETS.todo;
   const Icon = item.icon;
-  return <span aria-label={item.label} tabIndex={compact ? 0 : undefined} className={`adaptive-pill adaptive-pill-${item.color} ${compact?'adaptive-pill-compact':''} ${className}`}>
+  return <span aria-label={item.label} title={item.label} className={`adaptive-pill adaptive-pill-${item.color} ${compact?'adaptive-pill-compact':''} ${className}`}>
     <Icon size={16} strokeWidth={2.5}/><span className="adaptive-pill-label">{item.label}</span>
   </span>;
 }

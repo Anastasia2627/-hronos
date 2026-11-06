@@ -1,4 +1,0 @@
-/* Compact sidebar uses per-icon hints; it no longer expands over task cards. */
-@media(min-width:791px){
-  .sidebar-small .sidebar{width:77px;overflow:visible;}
-}

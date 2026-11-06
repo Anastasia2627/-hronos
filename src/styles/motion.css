@@ -1,0 +1,10 @@
+/* Motion communicates interactions, not decoration. No artificial waits or page-wide transitions. */
+@keyframes ui-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ui-pop{from{opacity:0;transform:translateY(6px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+.home-welcome,.home-apps,.home-focus,.tasks-page,.calendar-page,.project-page,.schedule-page,.ps-page{animation:ui-enter .26s ease-out both}
+.home-apps{animation-delay:45ms}.home-focus{animation-delay:85ms}
+.modal-dialog,.notification-panel,.home-results,.filter-dropdown{animation:ui-pop .18s ease-out both}
+.nav-link,.icon-button,.btn,.home-app-card,.task-card,.project-card,.stream-task-card,.home-focus-row,.work-tab,.segmented button,.text-button,.event-chip{transition:background-color .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease,transform .15s ease}
+@media(hover:hover){.btn:hover,.home-app-card:hover,.task-card:hover,.project-card:hover,.stream-task-card:hover{transform:translateY(-2px)}.icon-button:hover{background:#f2f5f9}.home-focus-row:hover{background:#f6f9fd}}
+:where(.btn,.home-app-card,.task-card,.icon-button):active{transform:scale(.99)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

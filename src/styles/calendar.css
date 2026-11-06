@@ -474,3 +474,9 @@
   font-size: 13px;
   outline: none;
 }
+/* Consistent readable labels for dates and events. */
+.month-cell{min-height:115px}
+.month-cell:hover,.time-slot:hover{background:#f7faff}
+.event-chip{border-radius:7px;font-size:13px;font-weight:700}
+.segmented{background:#f5f7fa}
+.year-month:hover{border-color:#efbc98}

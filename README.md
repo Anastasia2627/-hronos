@@ -55,3 +55,8 @@ Clone with an authorized GitHub account, or use GitHub **Code → Download ZIP**
 Home is the starting workspace: use its search to open a section or an existing task, or choose one of the six app tiles. The overview below shows today’s events and the next open tasks. All actions use the existing frontend state and local storage; no AI assistant, API or server chat is implied.
 
 Status labels use the existing To do / In progress / In review / Done stages and task priorities. In compact cards a coloured icon can expand to its full label on hover or keyboard focus. The collapsed left navigation expands on desktop hover or focus. These are display behaviours and do not add new task stages.
+
+
+## UI design principles
+
+The interface follows [AGENTS.md](AGENTS.md), [the UX book playbook](docs/UX_BOOK_PLAYBOOK.md), and the [redesign notes](docs/UX_REDESIGN_CHANGELOG.md). The frontend uses local browser data; true authentication, shared invitations and the API remain future work.

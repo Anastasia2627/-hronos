@@ -1,36 +1,14 @@
-/* Status chips are labels, not controls. Small chips expand on hover or focus. */
-.adaptive-pill{--pill-text:#8460d2;--pill-bg:#f2eafe;display:inline-flex;align-items:center;gap:8px;flex-shrink:0;min-height:30px;width:max-content;max-width:100%;padding:6px 11px;border-radius:999px;background:var(--pill-bg);color:var(--pill-text);font-size:13px;font-weight:800;white-space:nowrap;line-height:1.1;vertical-align:middle;cursor:default;transition:background .16s;}
+.adaptive-pill{--pill-text:#6843c9;--pill-bg:#f0eaff;display:inline-flex;align-items:center;gap:7px;max-width:100%;width:max-content;padding:7px 11px;min-height:31px;border-radius:999px;color:var(--pill-text);background:var(--pill-bg);font-size:13px;font-weight:750;line-height:1.15;white-space:nowrap;vertical-align:middle}
 .adaptive-pill svg{flex-shrink:0}
-.adaptive-pill-label{max-width:145px;overflow:hidden;opacity:1;white-space:nowrap;transition:max-width .2s,opacity .2s}
-.adaptive-pill-violet{--pill-text:#8c4bd6;--pill-bg:#f3eaff}
-.adaptive-pill-blue{--pill-text:#347bdf;--pill-bg:#eaf2ff}
-.adaptive-pill-sky{--pill-text:#2095da;--pill-bg:#e7f5ff}
-.adaptive-pill-orange{--pill-text:#db8535;--pill-bg:#fff1e2}
-.adaptive-pill-green{--pill-text:#2e9e73;--pill-bg:#e5f8ed}
-.adaptive-pill-red{--pill-text:#e65e77;--pill-bg:#fff0f3}
-.adaptive-pill-amber{--pill-text:#c59322;--pill-bg:#fff7e1}
-.adaptive-pill-compact{gap:0;padding:7px;min-width:30px;justify-content:center}
-.adaptive-pill-compact .adaptive-pill-label{max-width:0;opacity:0}
-.adaptive-pill-compact:is(:hover,:focus-visible){gap:8px;padding:6px 11px}
-.adaptive-pill-compact:is(:hover,:focus-visible) .adaptive-pill-label{max-width:145px;opacity:1}
-@media(max-width:1090px){.adaptive-pill-responsive{gap:0;padding:7px;min-width:30px;justify-content:center}.adaptive-pill-responsive .adaptive-pill-label{max-width:0;opacity:0}.adaptive-pill-responsive:is(:hover,:focus-visible){gap:8px;padding:6px 11px}.adaptive-pill-responsive:is(:hover,:focus-visible) .adaptive-pill-label{max-width:145px;opacity:1}}
-@media(hover:none){.adaptive-pill-compact:focus-visible .adaptive-pill-label,.adaptive-pill-responsive:focus-visible .adaptive-pill-label{max-width:145px;opacity:1}}
-
-/* Keyboard focus on the containing card also reveals its compact badge. */
-.task-card:focus-visible .adaptive-pill-compact,
-.project-card-main:focus-visible .adaptive-pill-compact,
-.home-focus-row:focus-visible .adaptive-pill-compact,
-.kanban-heading:focus-within .adaptive-pill-responsive,
-.project-col-heading:focus-within .adaptive-pill-responsive{gap:8px;padding:6px 11px}
-.task-card:focus-visible .adaptive-pill-compact .adaptive-pill-label,
-.project-card-main:focus-visible .adaptive-pill-compact .adaptive-pill-label,
-.home-focus-row:focus-visible .adaptive-pill-compact .adaptive-pill-label,
-.kanban-heading:focus-within .adaptive-pill-responsive .adaptive-pill-label,
-.project-col-heading:focus-within .adaptive-pill-responsive .adaptive-pill-label{max-width:145px;opacity:1}
-.project-column,.kanban-column{container-type:inline-size}
-@container (max-width:250px){
-  .adaptive-pill-responsive{gap:0;padding:7px;min-width:30px;justify-content:center}
-  .adaptive-pill-responsive .adaptive-pill-label{max-width:0;opacity:0}
-  .adaptive-pill-responsive:hover{gap:8px;padding:6px 11px}
-  .adaptive-pill-responsive:hover .adaptive-pill-label{max-width:145px;opacity:1}
-}
+.adaptive-pill-label{overflow:hidden;text-overflow:ellipsis}
+.adaptive-pill-violet{--pill-text:#7748cc;--pill-bg:#eee8ff}
+.adaptive-pill-blue{--pill-text:#286fc6;--pill-bg:#e6f2ff}
+.adaptive-pill-sky{--pill-text:#197fad;--pill-bg:#e4f6ff}
+.adaptive-pill-orange{--pill-text:#bf632a;--pill-bg:#fff0e3}
+.adaptive-pill-green{--pill-text:#0a805b;--pill-bg:#e3f7eb}
+.adaptive-pill-red{--pill-text:#c94b67;--pill-bg:#ffeaf0}
+.adaptive-pill-amber{--pill-text:#9d7214;--pill-bg:#fff2d9}
+/* Compact labels are only for extremely narrow cards; full status remains accessible via title/aria-label. */
+.adaptive-pill-compact{padding:7px;gap:0}
+.adaptive-pill-compact .adaptive-pill-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@media(min-width:730px){.task-card .adaptive-pill-compact{gap:7px;padding:7px 10px}.task-card .adaptive-pill-compact .adaptive-pill-label{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}}

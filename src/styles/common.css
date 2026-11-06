@@ -131,3 +131,8 @@
   border-radius: 15px;
   box-shadow: 0 4px 17px #253a5610;
 }
+/* Shared hierarchy and controls. */
+.page-heading p{display:block;margin-top:6px}
+.page-heading h1{line-height:1.17}
+.btn:focus-visible,.text-button:focus-visible{outline-offset:3px}
+@media(max-width:580px){.page-heading{align-items:flex-start}.page-actions{align-self:flex-start}}
