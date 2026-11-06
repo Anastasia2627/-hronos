@@ -33,9 +33,9 @@ body{color:var(--ink);background:var(--soft)}
 .work-tab{font-size:14px;font-weight:700;color:#68768a}
 .work-tab.active{color:#d86d2e}
 .work-count{font-size:14px;color:var(--muted);font-weight:600}
-.task-card,.project-card,.stream-task-card{border-color:#e6ebf2;box-shadow:var(--shadow-sm);background:#fff}
-.task-card>strong,.project-card-main>strong,.stream-task-card>strong{font-size:15px;font-weight:750;color:#1e304b}
-.task-card>p,.project-card-main>p,.stream-task-card>p{font-size:14px;color:#667589;line-height:1.5;font-weight:450}
+.task-card,.project-card,.stream-card-shell{border-color:#e6ebf2;box-shadow:var(--shadow-sm);background:#fff}
+.task-card>strong,.project-card-main>strong{font-size:15px;font-weight:750;color:#1e304b}
+.task-card>p,.project-card-main>p{font-size:14px;color:#667589;line-height:1.5;font-weight:450}
 .task-due,.project-card-meta,.table-date{color:#687990;font-size:13px}
 .kanban-column{background:#f7f9fc;border:1px solid #e8edf3}
 .kanban-heading strong,.project-col-heading{font-weight:750}

@@ -13,7 +13,7 @@ Open the local URL Vite prints, usually `http://localhost:5173`. To check the bu
 
 ## Find your way around
 
-- **Today** — your schedule and upcoming tasks, without a duplicate full task board.
+- **Home** — app shortcuts, quick creation and a short overview of upcoming work.
 - **Calendar** — month/week/day/year, create or edit events, search and filters. Click an empty time for quick creation; **New event** opens a full page.
 - **Tasks** — Board, List and Timeline, with collapsible filters. Create, edit, delete, move and bulk-update tasks.
 - **Projects** — project Kanban view and list view, with the same underlying tasks.
@@ -44,7 +44,7 @@ src/
 
 The icon set is **lucide-react**. The interface uses **Gilroy** when it is locally installed, otherwise **Manrope**; font files are intentionally not included. Provide a properly licensed Gilroy file if you need identical rendering on every device.
 
-Animated skeleton components are available in `src/components/Skeleton.jsx` for future real API loading. They are **not** artificially shown during local navigation.
+Skeleton placeholders are deliberately absent from the local-only UI because there are no network requests. They can be added when real API loading exists.
 
 ## Private GitHub repository
 
@@ -54,9 +54,9 @@ Clone with an authorized GitHub account, or use GitHub **Code → Download ZIP**
 
 Home is the starting workspace: use its search to open a section or an existing task, or choose one of the six app tiles. The overview below shows today’s events and the next open tasks. All actions use the existing frontend state and local storage; no AI assistant, API or server chat is implied.
 
-Status labels use the existing To do / In progress / In review / Done stages and task priorities. In compact cards a coloured icon can expand to its full label on hover or keyboard focus. The collapsed left navigation expands on desktop hover or focus. These are display behaviours and do not add new task stages.
+Status labels use the existing To do / In progress / In review / Done stages and task priorities. Compact status labels remain accessible to screen readers. The collapsed left navigation uses labels on hover or keyboard focus without covering the content. These are display behaviours and do not add new task stages.
 
 
 ## UI design principles
 
-The interface follows [AGENTS.md](AGENTS.md), [the UX book playbook](docs/UX_BOOK_PLAYBOOK.md), and the [redesign notes](docs/UX_REDESIGN_CHANGELOG.md). The frontend uses local browser data; true authentication, shared invitations and the API remain future work.
+The interface follows [AGENTS.md](AGENTS.md), [the UX book playbook](docs/UX_BOOK_PLAYBOOK.md), the [redesign notes](docs/UX_REDESIGN_CHANGELOG.md), and [file structure guide](docs/UI_CODE_STRUCTURE.md). The frontend uses local browser data; true authentication, shared invitations and the API remain future work.
