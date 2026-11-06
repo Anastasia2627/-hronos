@@ -32,7 +32,7 @@ export default function App() {
         <Topbar setSidebarOpen={setSidebarOpen} page={page} search={search} setSearch={setSearch}
           notificationsOpen={notificationsOpen} setNotificationsOpen={setNotificationsOpen}
           overdue={overdue} profile={profile} selectPage={selectPage} />
-        <div className="page-body">
+        <div className="page-body" key={page}>
           {page === 'overview' && <Overview date={TODAY} name={profile.name} events={todayEvents} tasks={tasks} colorFor={colorFor}
             onNewEvent={() => openEvent(null, TODAY, '09:00', 'page')} onOpenEvent={openEvent}
             onOpenTask={task => setTaskDraft({ ...task })} onPage={selectPage}

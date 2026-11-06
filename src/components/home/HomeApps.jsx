@@ -18,7 +18,7 @@ export const HOME_APPS = [
 export function HomeApps({ onPage, onNewEvent, onAddTask }) {
   const go = (key) => key === 'new-event' ? onNewEvent() : key === 'new-task' ? onAddTask() : onPage(key);
   return <section className="home-apps" aria-label="Your workspace shortcuts">
-    <div className="home-section-heading"><h2>Apps</h2><span>Everything in one place</span></div>
+    <div className="home-section-heading"><h2>Apps</h2></div>
     <div className="home-app-grid">{HOME_APPS.map(({ key, name, description, icon: Icon, tone }) =>
       <button key={key} className={`home-app-card home-tone-${tone}`} onClick={() => go(key)}>
         <span className="home-app-banner" aria-hidden="true" />
