@@ -23,6 +23,8 @@ npm run preview
 - **Overview:** today’s timeline, summary cards, mini calendar, quick links, task snapshot
 - **Calendar:** month, week, day, year; previous/next/today, search and event-type filter, calendar visibility, event preview/editing
 - **My tasks:** Kanban board, sortable/filterable table with multi-select, month milestones timeline and personal notes, status/priority badges, add/edit/delete, drag and drop
+- **Projects:** ManagePro-inspired project board with four pastel workflow columns, editable project name, local teammate badges, priority search/filter, drag-and-drop and a list view
+- **Team space:** Zaval-inspired three-stream workspace with a nested collections sidebar, timeline cards, status shortcuts, sorting, search and drag-and-drop between groups
 - **Schedule:** day-by-day event agenda and a week selector
 - **Settings:** personal profile and calendars with editable colors
 
@@ -48,6 +50,9 @@ src/
     Topbar.jsx            # search, alerts, profile access
     CalendarPage.jsx      # calendar toolbar and screen
     TaskPage.jsx          # tasks screen and view switching
+    ProjectBoardPage.jsx  # status-based project board and list
+    TeamSpacePage.jsx     # three-lane collaborative-style workspace
+    workspace/            # shared project/team cards and headers
     TaskToolbar.jsx       # filters, sorting, view tabs
     TaskList.jsx          # list / table view
     TaskTimeline.jsx      # milestone timeline
@@ -95,3 +100,7 @@ download the repository ZIP using GitHub's **Code → Download ZIP** option.
 **Typography:** the UI tries locally installed **Gilroy**, with Google **Manrope** as a close visual fallback. Gilroy is a commercial font and is not included in this repository. To make it available for all visitors, add properly licensed `.woff2` files to `public/fonts/` and update `src/styles/foundations.css` with their relative URLs. Do not commit unlicensed font files.
 
 **Icons:** `lucide-react`; there is no additional icon library. No backend or database is used at this stage.
+
+## Two additional workspace views
+
+**Projects** and **Team space** share the existing locally saved task data with **My tasks**. Create and edit a task in one view and see it in the others. Dragging between Projects columns changes its status; dragging between Team space columns changes its workspace group. The project title and demonstration teammate initials stay in localStorage. Teammates are visual demo entries; no invitations or real collaboration are possible without a backend.

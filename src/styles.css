@@ -15,3 +15,7 @@
 @import './styles/task-views.css';
 @import './styles/task-timeline.css';
 @import './styles/profile-details.css';
+
+@import './styles/project-board.css';
+@import './styles/team-space.css';
+@import './styles/team-streams.css';

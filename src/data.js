@@ -42,16 +42,16 @@ export const STAGES = [
   { id:'done', name:'Done', tone:'green' },
 ];
 export const initialTasks = [
-  { id:'t1', title:'Design landing page', description:'Create a clean and modern landing page.', stage:'todo', date:dt(2), color:'#9478e9', initials:'AK', priority:'Medium' },
-  { id:'t2', title:'Research competitors', description:'Analyze top competitors and note key takeaways.', stage:'todo', date:dt(3), color:'#5a9de5', initials:'SP', priority:'Low' },
-  { id:'t3', title:'Write project brief', description:'Define the scope, goals and deliverables.', stage:'todo', date:dt(4), color:'#4fba85', initials:'MJ', priority:'High' },
-  { id:'t4', title:'Build homepage', description:'Develop the homepage according to the design.', stage:'progress', date:dt(1), color:'#ecad48', initials:'AK', priority:'High' },
-  { id:'t5', title:'Implement features', description:'Add the core features and functionality.', stage:'progress', date:dt(5), color:'#ef7e82', initials:'TD', priority:'Medium' },
-  { id:'t6', title:'Review components', description:'Check spacing, states and responsiveness.', stage:'review', date:dt(2), color:'#7298ee', initials:'AK', priority:'Medium' },
-  { id:'t7', title:'Project kick-off', description:'Initial meeting with the team and stakeholders.', stage:'done', date:dt(-4), color:'#4cbb84', initials:'AK', priority:'Low' },
-  { id:'t8', title:'Collect requirements', description:'Gather and document project requirements.', stage:'done', date:dt(-2), color:'#4cbb84', initials:'SP', priority:'Low' },
+  { id:'t1', title:'Design landing page', description:'Create a clean and modern landing page.', stage:'todo', date:dt(2), color:'#9478e9', initials:'AK', priority:'Medium', workspaceLane:'team' },
+  { id:'t2', title:'Research competitors', description:'Analyze top competitors and note key takeaways.', stage:'todo', date:dt(3), color:'#5a9de5', initials:'SP', workspaceLane:'ideas', priority:'Low' },
+  { id:'t3', title:'Write project brief', description:'Define the scope, goals and deliverables.', stage:'todo', date:dt(4), color:'#4fba85', initials:'MJ', workspaceLane:'team', priority:'High' },
+  { id:'t4', title:'Build homepage', description:'Develop the homepage according to the design.', stage:'progress', date:dt(1), color:'#ecad48', initials:'AK', workspaceLane:'team', priority:'High' },
+  { id:'t5', title:'Implement features', description:'Add the core features and functionality.', stage:'progress', date:dt(5), color:'#ef7e82', initials:'TD', workspaceLane:'other', priority:'Medium' },
+  { id:'t6', title:'Review components', description:'Check spacing, states and responsiveness.', stage:'review', date:dt(2), color:'#7298ee', initials:'AK', workspaceLane:'ideas', priority:'Medium' },
+  { id:'t7', title:'Project kick-off', description:'Initial meeting with the team and stakeholders.', stage:'done', date:dt(-4), color:'#4cbb84', initials:'AK', workspaceLane:'team', priority:'Low' },
+  { id:'t8', title:'Collect requirements', description:'Gather and document project requirements.', stage:'done', date:dt(-2), color:'#4cbb84', initials:'SP', workspaceLane:'other', priority:'Low' },
 ];
 export const emptyEvent = (date = dateKey(today)) => ({ title:'',date,start:'09:00',end:'10:00',type:'arrangement',calendarId:'personal',description:'',location:'',participants:'',repeat:'none' });
-export const emptyTask = () => ({title:'',description:'',stage:'todo',date:dateKey(today),color:'#9478e9',initials:'AK',priority:'Medium'});
+export const emptyTask = () => ({title:'',description:'',stage:'todo',date:dateKey(today),color:'#9478e9',initials:'AK',priority:'Medium',workspaceLane:'team'});
 export const getWeekNumber = (d) => { const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const dayNum = date.getUTCDay() || 7; date.setUTCDate(date.getUTCDate() + 4 - dayNum); const yearStart = new Date(Date.UTC(date.getUTCFullYear(),0,1)); return Math.ceil((((date - yearStart)/86400000)+1)/7); };
 export function monthCells(date) { const first = startOfWeek(startOfMonth(date)); return Array.from({length:42}, (_,i)=>offsetDate(first,i)); }

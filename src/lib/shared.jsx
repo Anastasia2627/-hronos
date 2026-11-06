@@ -3,6 +3,8 @@ import {
   LayoutDashboard,
   CalendarDays,
   ListTodo,
+  PanelsTopLeft,
+  UsersRound,
   CalendarClock,
   Bell,
   Video,
@@ -18,6 +20,8 @@ export const MENU = [
   { key: 'overview', label: 'Overview', icon: LayoutDashboard },
   { key: 'calendar', label: 'Calendar', icon: CalendarDays },
   { key: 'tasks', label: 'My tasks', icon: ListTodo },
+  { key: 'projects', label: 'Projects', icon: PanelsTopLeft },
+  { key: 'team', label: 'Team space', icon: UsersRound },
   { key: 'schedule', label: 'Schedule', icon: CalendarClock },
 ];
 

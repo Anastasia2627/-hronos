@@ -4,7 +4,7 @@ import { initials } from '../lib/shared.jsx';
 
 export function Topbar({ setSidebarOpen, page, search, setSearch, notificationsOpen, setNotificationsOpen, overdue, profile, selectPage }) {
   return (<header className="topbar">
-    <div className="topbar-left"><button className="icon-button mobile-menu" onClick={() => setSidebarOpen(true)} aria-label="Open menu"><Menu size={21} /></button><span className="muted-crumb">Workspace</span><ChevronRight size={14} className="crumb-chevron" /><strong>{page === 'create-event' ? 'New event' : page === 'overview' ? 'Overview' : page === 'calendar' ? 'Calendar' : page === 'tasks' ? 'My tasks' : page === 'schedule' ? 'Schedule' : 'Settings'}</strong></div>
+    <div className="topbar-left"><button className="icon-button mobile-menu" onClick={() => setSidebarOpen(true)} aria-label="Open menu"><Menu size={21} /></button><span className="muted-crumb">Workspace</span><ChevronRight size={14} className="crumb-chevron" /><strong>{page === 'create-event' ? 'New event' : page === 'overview' ? 'Overview' : page === 'calendar' ? 'Calendar' : page === 'tasks' ? 'My tasks' : page === 'projects' ? 'Projects' : page === 'team' ? 'Team space' : page === 'schedule' ? 'Schedule' : 'Settings'}</strong></div>
     <div className="topbar-right">
       <label className="global-search"><Search size={17} /><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search anything..." aria-label="Search events and tasks" /><kbd>⌘ K</kbd></label>
       <div className="topbar-notify"><button className="icon-button header-action" title="Notifications" onClick={() => setNotificationsOpen(!notificationsOpen)}><Bell size={19} />{overdue > 0 && <span className="notification-dot" />}</button>

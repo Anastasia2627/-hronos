@@ -7,6 +7,8 @@ import { Topbar } from './components/Topbar.jsx';
 import { Overview } from './components/Overview.jsx';
 import { CalendarPage } from './components/CalendarPage.jsx';
 import { TaskPage } from './components/TaskPage.jsx';
+import { ProjectBoardPage } from './components/ProjectBoardPage.jsx';
+import { TeamSpacePage } from './components/TeamSpacePage.jsx';
 import { SchedulePage } from './components/SchedulePage.jsx';
 import { SettingsPage } from './components/SettingsPage.jsx';
 import { CreateEventPage } from './components/CreateEventPage.jsx';
@@ -21,7 +23,7 @@ export default function App() {
     search, setSearch, typeFilter, setTypeFilter, showFilters, setShowFilters, eventDraft, taskFilter,
     setTaskFilter, filteredEvents, filteredTasks, sidebarOpen, setSidebarOpen, sidebarCollapsed,
     setSidebarCollapsed, notificationsOpen, setNotificationsOpen, overdue, selectPage, toggleCalendar,
-    setCalendarDraft, setTaskDraft, openEvent, changeViewPage, colorFor, moveTask, moveTasks, todayEvents,
+    setCalendarDraft, setTaskDraft, openEvent, changeViewPage, colorFor, moveTask, moveTaskLane, moveTasks, todayEvents,
     upcomingCount, closeEvent, saveEvent, setConfirmDelete, setToast } = state;
 
   return (
@@ -48,6 +50,8 @@ export default function App() {
             setTypeFilter={setTypeFilter} showFilters={showFilters} setShowFilters={setShowFilters} />}
           {page === 'tasks' && <TaskPage tasks={tasks} filteredTasks={filteredTasks} setTaskDraft={setTaskDraft}
             moveTask={moveTask} moveTasks={moveTasks} setConfirmDelete={setConfirmDelete} />}
+          {page === 'projects' && <ProjectBoardPage tasks={tasks} onOpen={setTaskDraft} onMove={moveTask} onMoveMany={moveTasks} onConfirmDelete={setConfirmDelete} />}
+          {page === 'team' && <TeamSpacePage tasks={tasks} onOpen={setTaskDraft} onStatus={moveTask} onMoveLane={moveTaskLane} profile={profile}/>}
           {page === 'schedule' && <SchedulePage events={filteredEvents} date={selectedDate}
             onDate={setSelectedDate} colorFor={colorFor} onEvent={openEvent}
             onNew={() => openEvent(null, selectedDate, '09:00', 'page')} />}
