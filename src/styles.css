@@ -29,3 +29,6 @@
 @import './styles/welcome-responsive.css';
 
 @import './styles/calendar-experience.css';
+
+@import './styles/task-editor.css';
+@import './styles/priority-stack.css';

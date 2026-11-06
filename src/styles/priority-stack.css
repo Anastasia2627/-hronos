@@ -1,0 +1,25 @@
+/* Featured tasks: distinctive but readable, never overlapping interactive controls. */
+.priority-highlight { grid-column: 1 / -1; position: relative; overflow: hidden; border-radius: 19px; border: 1px solid #e6edf5; background: radial-gradient(circle at 5% 20%,#ffebd9 0,transparent 30%),radial-gradient(circle at 97% 97%,#e7eaff 0,transparent 35%),#f9fbff; padding: 23px; }
+.priority-highlight::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(#91a8c51f 1.2px,transparent 1.2px); background-size: 12px 12px; pointer-events: none; }
+.priority-highlight-head,.priority-highlight-content { position: relative; z-index: 1; }
+.priority-highlight-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 19px; }
+.priority-highlight-kicker { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 9px; font-size: 11px; letter-spacing: .12em; font-weight: 850; color: #d67c36; }
+.priority-highlight-head h3 { font-size: 22px; font-weight: 850; letter-spacing: -.035em; color: #25354b; }
+.priority-highlight-head p { font-size: 13px; color: #6d7d91; margin-top: 5px; }
+.priority-highlight-head>button { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; font-size: 13px; font-weight: 800; color: #b86c35; padding: 7px; }
+.priority-highlight-content { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: stretch; gap: 12px; }
+.priority-highlight-card { width: 100%; display: grid; text-align: left; gap: 11px; padding: 17px; border-radius: 16px; border: 1px solid #e7ebf2; background: #fff; box-shadow: 0 10px 24px #273b5a12; transition: transform .18s,box-shadow .18s; }
+.priority-highlight-card::after { content: ""; height: 3px; border-radius: 5px; background: var(--task-accent); }
+.priority-highlight-card:hover { transform: translateY(-4px); box-shadow: 0 16px 27px #273b5a1c; }
+.priority-highlight-card-meta { display: flex; justify-content: space-between; gap: 7px; color: #8c9bae; font-size: 10px; font-weight: 850; letter-spacing: .06em; }
+.priority-highlight-card-meta>span:last-child { letter-spacing: 0; color: #cc7735; }
+.priority-highlight-card strong { font-size: 16px; color: #26364e; font-weight: 800; line-height: 1.25; }
+.priority-highlight-card p { font-size: 13px; color: #738298; line-height: 1.4; min-height: 36px; }
+.priority-highlight-card-footer { display: flex; justify-content: space-between; font-size: 12px; color: #65758d; font-weight: 750; }
+.priority-highlight-empty { grid-column: 1/-1; display: grid; justify-items: center; gap: 8px; text-align: center; background: #ffffffc9; border: 1px dashed #dce4ef; border-radius: 15px; padding: 26px 15px; }
+.priority-highlight-empty>span { display: grid; place-items: center; width: 42px; height: 42px; background: #fff0e5; border-radius: 13px; color: var(--orange); }
+.priority-highlight-empty strong { color: #304259; }
+.priority-highlight-empty p { font-size: 13px; color: #7c899c; }
+@media(max-width:900px) { .priority-highlight-content { grid-template-columns: 1fr; } .priority-highlight-card p { min-height: 0; } }
+@media(max-width:600px) { .priority-highlight { padding: 17px; } .priority-highlight-head h3 { font-size: 19px; } }
+@media(prefers-reduced-motion:reduce) { .priority-highlight-card { transition: none; } .priority-highlight-card:hover { transform: none; } }
