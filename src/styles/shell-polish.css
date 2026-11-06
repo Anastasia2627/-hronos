@@ -1,0 +1,36 @@
+/* Shared visual finish for the launcher, kanban cards and compact dock. */
+:root { --ink:#202c44; --muted:#75839a; --line:#e9edf5; }
+body { background:#f7f9ff; }
+.app-shell { background:radial-gradient(ellipse 65% 36% at 52% 0,#ecf2ff 0,transparent 100%),#f7f9ff; }
+.topbar { background:rgba(255,255,255,.91);backdrop-filter:blur(18px);border-bottom:1px solid #edf1f8; }
+.topbar-left strong { font-size:15px;font-weight:800; }
+.topbar .header-action { border:1px solid #eef1f7;background:#fff;border-radius:11px;color:#6c7c92;box-shadow:0 3px 10px #273c5c09; }
+.topbar .header-action:hover { background:#fff4ed;color:#e8803e; }
+.topbar-avatar,.sidebar-person .avatar { box-shadow:0 3px 8px #e9877950;border:2px solid white; }
+.page-body { max-width:1800px;padding-top:25px; }
+
+/* The compact rail remains compact. Its labels appear beside icons, never over the board. */
+@media(min-width:791px){
+ .sidebar-small .sidebar { width:77px;overflow:visible;padding:22px 12px 17px;background:#fff;border-right:1px solid #eef1f6;box-shadow:4px 0 22px #34517106; }
+ .sidebar-small .brand-row { margin-bottom:32px; }
+ .sidebar-small .brand { margin:auto; }
+ .sidebar-small .collapse-button { width:43px;height:39px;margin-top:7px; }
+ .sidebar-small .sidebar-copy,.sidebar-small .brand-name { display:none!important; }
+ .sidebar-small .nav-link { position:relative;min-height:45px;width:46px;justify-content:center!important;padding:11px!important;border-radius:12px; }
+ .sidebar-small .nav-link svg { width:21px;height:21px;flex-shrink:0; }
+ .sidebar-small .nav-number { display:none!important; }
+ .sidebar-small .nav-link.nav-active { background:#fff0e6;color:#e98342;box-shadow:inset 0 0 0 1px #f9e1ce; }
+ .sidebar-small .nav-link[data-hint]:is(:hover,:focus-visible)::after,
+ .sidebar-small .sidebar-person[data-hint]:is(:hover,:focus-visible)::after { content:attr(data-hint);position:absolute;z-index:200;left:calc(100% + 12px);top:50%;transform:translateY(-50%);padding:9px 12px;background:#28334a;color:#fff;border-radius:9px;box-shadow:0 8px 22px #29365629;font-size:13px;font-weight:700;white-space:nowrap;pointer-events:none; }
+ .sidebar-small .sidebar-person { position:relative;padding:12px 4px 0;border-color:#edf0f4; }
+ .sidebar-small .sidebar-person-text { display:none!important; }
+ .sidebar-small .sidebar-bottom { padding-top:12px; }
+ .sidebar-small .nav-extra { padding:0;border:0;margin:3px 0; }
+ .sidebar-small .nav-stack { align-items:center; }
+ .sidebar-small .sidebar-person { justify-content:center; }
+ .sidebar-small .sidebar-bottom>.nav-link { margin:auto; }
+ .sidebar-small .sidebar-calendars { display:none; }
+}
+
+
+@media(max-width:790px){ .sidebar-small .sidebar{overflow-y:auto!important;} }

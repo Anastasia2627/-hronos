@@ -1,5 +1,4 @@
 import React from 'react';
-import { CalendarPlus, ListPlus } from 'lucide-react';
 import { HomeApps } from './home/HomeApps.jsx';
 import { HomeCommand } from './home/HomeCommand.jsx';
 import { HomeFocus } from './home/HomeFocus.jsx';
@@ -8,17 +7,14 @@ export function Overview({ date, name, events, tasks, colorFor, onNewEvent, onOp
   const firstName = (name || 'there').trim().split(' ')[0];
   return <div className="home-page">
     <section className="home-welcome">
-      <div className="home-welcome-copy">
-        <h1>Welcome back, {firstName}<span className="home-period">.</span></h1>
-        <p>Your plans, together in one place.</p>
+      <div className="home-welcome-copy"><span className="home-hello-mark">✳</span>
+        <h1>Welcome to your Chronos workspace</h1>
+        <p>Good to see you, {firstName}. What’s on your mind?</p>
       </div>
-      <HomeCommand tasks={tasks} onPage={onPage} onTask={onOpenTask} />
-      <div className="home-shortcuts">
-        <button className="home-shortcut home-shortcut-primary" onClick={onNewEvent}><CalendarPlus size={19}/> New event</button>
-        <button className="home-shortcut" onClick={onAddTask}><ListPlus size={19}/> New task</button>
-      </div>
+      <div className="home-orbit" aria-hidden="true"><span className="home-orbit-a"/><span className="home-orbit-b"/><span className="home-orbit-c"/></div>
+      <HomeCommand tasks={tasks} onPage={onPage} onTask={onOpenTask} onNewEvent={onNewEvent} onAddTask={onAddTask}/>
     </section>
-    <HomeApps onPage={onPage}/>
+    <HomeApps onPage={onPage} onNewEvent={onNewEvent} onAddTask={onAddTask}/>
     <HomeFocus date={date} events={events} tasks={tasks} colorFor={colorFor}
       onEvent={onOpenEvent} onTask={onOpenTask} onPage={onPage}/>
   </div>;

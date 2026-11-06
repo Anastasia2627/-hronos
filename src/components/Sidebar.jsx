@@ -17,14 +17,14 @@ export function Sidebar({ sidebarOpen, sidebarCollapsed, setSidebarCollapsed, ca
       <button className="icon-button collapse-button" aria-label={sidebarCollapsed ? 'Expand navigation' : 'Collapse navigation'} onClick={() => setSidebarCollapsed(!sidebarCollapsed)}>{sidebarCollapsed ? <PanelLeftOpen size={19}/> : <PanelLeftClose size={19}/>}</button>
     </div>
     <nav className="nav-stack" aria-label="Main navigation">
-      {MENU.map(item => <button key={item.key} className={`nav-link ${page === item.key ? 'nav-active' : ''}`} onClick={() => selectPage(item.key)} title={item.label} aria-current={page === item.key ? 'page' : undefined}>
+      {MENU.map(item => <button key={item.key} className={`nav-link ${page === item.key ? 'nav-active' : ''}`} onClick={() => selectPage(item.key)} data-hint={item.label} aria-label={item.label} aria-current={page === item.key ? 'page' : undefined}>
         <item.icon size={20} strokeWidth={1.9}/><span className="sidebar-copy">{item.label}</span>
         {item.key === 'tasks' && <span className="nav-number sidebar-copy">{tasks.filter(t => t.stage !== 'done').length}</span>}
       </button>)}
-      <button className={`nav-link more-views ${openMore ? 'more-open' : ''}`} onClick={() => setMoreOpen(!openMore)} aria-expanded={openMore} aria-label="More views" title="More views">
+      <button className={`nav-link more-views ${openMore ? 'more-open' : ''}`} onClick={() => setMoreOpen(!openMore)} aria-expanded={openMore} aria-label="More views" data-hint="More views">
         <ChevronDown size={19}/><span className="sidebar-copy">More views</span>
       </button>
-      {openMore && <div className="nav-extra">{EXTRA_MENU.map(item => <button key={item.key} className={`nav-link ${page === item.key ? 'nav-active' : ''}`} onClick={() => selectPage(item.key)} title={item.label}>
+      {openMore && <div className="nav-extra">{EXTRA_MENU.map(item => <button key={item.key} className={`nav-link ${page === item.key ? 'nav-active' : ''}`} onClick={() => selectPage(item.key)} data-hint={item.label} aria-label={item.label}>
         <item.icon size={19}/><span className="sidebar-copy">{item.label}</span>
       </button>)}</div>}
     </nav>
@@ -38,8 +38,8 @@ export function Sidebar({ sidebarOpen, sidebarCollapsed, setSidebarCollapsed, ca
       </div>)}
     </div>}
     <div className="sidebar-bottom">
-      <button className={`nav-link ${page === 'settings' ? 'nav-active' : ''}`} onClick={() => selectPage('settings')}><Settings2 size={20}/><span className="sidebar-copy">Settings</span></button>
-      <button className="sidebar-person" onClick={() => selectPage('settings')} title="Edit your profile">
+      <button className={`nav-link ${page === 'settings' ? 'nav-active' : ''}`} onClick={() => selectPage('settings')} aria-label="Settings" data-hint="Settings"><Settings2 size={20}/><span className="sidebar-copy">Settings</span></button>
+      <button className="sidebar-person" onClick={() => selectPage('settings')} aria-label="Edit profile" data-hint="My profile">
         <span className="avatar">{profile.avatar ? <img src={profile.avatar} alt=""/> : initials(profile.name)}</span>
         <span className="sidebar-person-text sidebar-copy"><strong>{profile.name}</strong><small>My profile</small></span>
       </button>

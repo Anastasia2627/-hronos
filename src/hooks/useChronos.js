@@ -25,7 +25,7 @@ export function useChronos() {
   const [calendarDraft, setCalendarDraft] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
   const [toast, setToast] = useState('');
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [taskFilter, setTaskFilter] = useState('all');
