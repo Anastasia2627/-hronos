@@ -1,0 +1,24 @@
+/* Neutral, animated placeholders share the geometry of real content. */
+.page-skeleton { width: 100%; animation: skeleton-appear .16s ease; }
+.skeleton-bar { display:block; height: 13px; max-width:100%; border-radius:6px; background:linear-gradient(105deg,#e8ebef 9%,#f5f6f8 24%,#e8ebef 42%); background-size:220% 100%; animation: skeleton-shimmer 1.4s ease-in-out infinite; }
+.skeleton-wide {width:100%;} .skeleton-heading {width:42%;height:32px;} .skeleton-medium {width:65%;} .skeleton-short {width:35%;} .skeleton-tiny {width:24%;}
+.skeleton-header { display:grid; gap:13px; padding:5px 0 28px; max-width:490px; }
+.skeleton-stats {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:19px;}
+.skeleton-stat,.skeleton-column,.skeleton-table,.skeleton-card {border:1px solid #edf0f4;border-radius:14px;background:#fff;padding:20px;}
+.skeleton-stat {display:grid;gap:15px;min-height:145px;}
+.skeleton-main-grid {display:grid;grid-template-columns:1.65fr 1fr;gap:18px;}
+.skeleton-table {display:grid;gap:16px;align-content:start;min-height:310px;}
+.skeleton-row {display:flex;gap:22px;padding:14px 4px;border-bottom:1px solid #f2f3f5;align-items:center;}
+.skeleton-row .skeleton-bar {flex:1;} .skeleton-row .skeleton-short {flex:.5;} .skeleton-row .skeleton-tiny {flex:.25;}
+.skeleton-table-head {display:flex;justify-content:space-between;}
+.skeleton-columns {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;}
+.skeleton-column {background:#f8f9fb;display:grid;align-content:start;gap:13px;padding:14px;}
+.skeleton-card {display:grid;gap:13px;min-height:151px;box-shadow:0 2px 7px #222d3808;}
+.skeleton-card-footer {display:flex;justify-content:space-between;margin-top:15px;}
+.skeleton-milestones {height:120px;display:flex;align-items:center;gap:30px;border-bottom:2px solid #eef0f4;}
+.skeleton-milestones .skeleton-bar {height:15px;flex:1;}
+@keyframes skeleton-shimmer {0%{background-position:100% 0}100%{background-position:-100% 0}}
+@keyframes skeleton-appear {from{opacity:.35}to{opacity:1}}
+@media (max-width:1050px) {.skeleton-columns{grid-template-columns:repeat(2,1fr)}.skeleton-stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px) {.skeleton-columns,.skeleton-main-grid,.skeleton-stats{grid-template-columns:1fr}.skeleton-stat:nth-child(n+3){display:none}.skeleton-heading{width:75%}}
+@media (prefers-reduced-motion:reduce){.skeleton-bar,.page-skeleton{animation:none}}

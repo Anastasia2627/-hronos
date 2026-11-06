@@ -65,6 +65,8 @@ export function useChronos() {
     setTaskDraft(null); setToast(form.id ? 'Task updated' : 'Task created');
   };
   const moveTask = (id, stage) => setTasks((prev) => prev.map((task) => task.id === id ? { ...task, stage } : task));
+  const moveTasks = (ids, stage) => { const selected = new Set(ids); setTasks(prev => prev.map(t => selected.has(t.id) ? { ...t, stage } : t)); setToast(`${ids.length} tasks updated`); };
+  const deleteTasks = (ids) => { const selected = new Set(ids); setTasks(prev => prev.filter(t => !selected.has(t.id))); setConfirmDelete(null); setToast(`${ids.length} tasks deleted`); };
   const deleteTask = (id) => { setTasks((prev) => prev.filter((t) => t.id !== id)); setTaskDraft(null); setConfirmDelete(null); setToast('Task deleted'); };
   const saveCalendar = (form) => {
     if (!form.name.trim()) { setToast('Give your calendar a name'); return; }
@@ -81,5 +83,5 @@ export function useChronos() {
   const todayEvents = getOccurrences(filteredEvents, TODAY);
   const upcomingCount = filteredEvents.filter((e) => parseDate(e.date) >= new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate())).length;
   const overdue = tasks.filter((t) => t.stage !== 'done' && parseDate(t.date) < new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate())).length;
-  return { calendars, events, tasks, profile, setProfile, page, selectedDate, setSelectedDate, view, setView, search, setSearch, typeFilter, setTypeFilter, showFilters, setShowFilters, eventDraft, eventEditor, taskDraft, setTaskDraft, calendarDraft, setCalendarDraft, confirmDelete, setConfirmDelete, sidebarOpen, setSidebarOpen, sidebarCollapsed, setSidebarCollapsed, toast, setToast, notificationsOpen, setNotificationsOpen, taskFilter, setTaskFilter, filteredEvents, filteredTasks, colorFor, selectPage, toggleCalendar, changeViewPage, openEvent, closeEvent, saveEvent, deleteEvent, saveTask, moveTask, deleteTask, saveCalendar, deleteCalendar, todayEvents, upcomingCount, overdue };
+  return { calendars, events, tasks, profile, setProfile, page, selectedDate, setSelectedDate, view, setView, search, setSearch, typeFilter, setTypeFilter, showFilters, setShowFilters, eventDraft, eventEditor, taskDraft, setTaskDraft, calendarDraft, setCalendarDraft, confirmDelete, setConfirmDelete, sidebarOpen, setSidebarOpen, sidebarCollapsed, setSidebarCollapsed, toast, setToast, notificationsOpen, setNotificationsOpen, taskFilter, setTaskFilter, filteredEvents, filteredTasks, colorFor, selectPage, toggleCalendar, changeViewPage, openEvent, closeEvent, saveEvent, deleteEvent, saveTask, moveTask, moveTasks, deleteTask, deleteTasks, saveCalendar, deleteCalendar, todayEvents, upcomingCount, overdue };
 }

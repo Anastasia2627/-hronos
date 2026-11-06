@@ -1,9 +1,9 @@
-/* Gilroy (if installed and licensed) with a metrically similar open fallback. */
+/* Prefer locally installed licensed Gilroy; Manrope keeps a similar shape elsewhere. */
 @font-face {
   font-family: 'Gilroy';
   src: local('Gilroy'), local('Gilroy Regular'), local('Gilroy-Regular');
-  font-style: normal;
   font-weight: 400 900;
+  font-style: normal;
   font-display: swap;
 }
 

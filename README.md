@@ -22,7 +22,7 @@ npm run preview
 
 - **Overview:** today’s timeline, summary cards, mini calendar, quick links, task snapshot
 - **Calendar:** month, week, day, year; previous/next/today, search and event-type filter, calendar visibility, event preview/editing
-- **My tasks:** draggable Kanban cards, status, priority, due dates, assignee colors, add/edit/delete
+- **My tasks:** Kanban board, sortable/filterable table with multi-select, month milestones timeline and personal notes, status/priority badges, add/edit/delete, drag and drop
 - **Schedule:** day-by-day event agenda and a week selector
 - **Settings:** personal profile and calendars with editable colors
 
@@ -34,7 +34,7 @@ Events, tasks, calendars and profile settings are persisted in **this browser’
 
 ## Visual direction
 
-White and very pale blue-gray surfaces; restrained warm orange brand accents; soft pastel status badges; clean cards, fine borders and compact iconography. The uploaded references guide the styling. Typography uses locally available `Gilroy` when installed, with Google `Manrope` as a close visual fallback.
+White and very pale blue-gray surfaces; restrained warm orange brand accents; soft pastel status badges; clean cards, fine borders and compact iconography. The uploaded references guide the styling. Neutral animated skeleton placeholders appear during initial navigation and manual view refresh; these are simulated in the local demo, not network operations. Typography uses locally available `Gilroy` when installed, with Google `Manrope` as a close visual fallback.
 
 ## Project structure
 
@@ -47,7 +47,14 @@ src/
     Sidebar.jsx           # navigation and calendars
     Topbar.jsx            # search, alerts, profile access
     CalendarPage.jsx      # calendar toolbar and screen
-    TaskPage.jsx          # task board screen
+    TaskPage.jsx          # tasks screen and view switching
+    TaskToolbar.jsx       # filters, sorting, view tabs
+    TaskList.jsx          # list / table view
+    TaskTimeline.jsx      # milestone timeline
+    TaskStats.jsx         # progress counters
+    TimelineNotes.jsx     # local-only notes
+    BulkActions.jsx       # multi-select toolbar
+    Skeleton.jsx          # animated loading placeholders
     CreateEventPage.jsx   # full-page event creation
     AppDialogs.jsx        # event, task, calendar dialogs
     CalendarViews.jsx     # month, week, day, year grids
@@ -75,12 +82,16 @@ If GitHub says *Not Found* inside a third-party editor, check that the editor
 is signed in to the correct account and has repository access; alternatively,
 download the repository ZIP using GitHub's **Code → Download ZIP** option.
 
-## Typography and icons
 
-Gilroy is set as the first font choice. This repository does not distribute Gilroy font binaries. The browser uses Manrope if Gilroy is not installed locally. If you have a license to distribute Gilroy on the web, add your licensed .woff2 files under public/fonts and update src/styles/foundations.css with the corresponding @font-face URLs.
+## Frontend architecture (v0.2)
 
-The icon set is `lucide-react` (React components). This is compatible with the allowed HTML, CSS, and React stack.
+- `src/App.jsx` — page routing and shared state wiring.
+- `src/components/` — one screen or interface section per file.
+- `src/components/forms/` — separate event/task/calendar forms.
+- `src/hooks/useChronos.js` — frontend-only actions and browser storage.
+- `src/styles/` — focused CSS modules by screen/area.
+- `src/data.js` — demo data and date helpers.
 
-## UI code map
+**Typography:** the UI tries locally installed **Gilroy**, with Google **Manrope** as a close visual fallback. Gilroy is a commercial font and is not included in this repository. To make it available for all visitors, add properly licensed `.woff2` files to `public/fonts/` and update `src/styles/foundations.css` with their relative URLs. Do not commit unlicensed font files.
 
-The app stays frontend-only. `src/App.jsx` coordinates screens, `src/components` contains reusable views, `src/components/forms` contains one form per file, `src/hooks/useChronos.js` owns demo logic and local storage, and `src/styles` groups small style sheets by responsibility. No API, MongoDB, or authentication is connected yet.
+**Icons:** `lucide-react`; there is no additional icon library. No backend or database is used at this stage.

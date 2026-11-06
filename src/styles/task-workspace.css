@@ -1,0 +1,28 @@
+/* Task view controls — lightweight, clean and accessible. */
+.work-toolbar{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 18px 16px;margin:6px 0 18px;box-shadow:0 5px 22px #2a385007;}
+.work-toolbar-top{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #edf0f4;margin-bottom:16px;}
+.work-view-tabs{display:flex;align-items:center;gap:22px;}
+.work-tab{display:inline-flex;align-items:center;gap:8px;font-weight:720;font-size:14px;color:#7b8492;border-bottom:2px solid transparent;padding:17px 4px 15px;transition:color .2s,border-color .2s;}
+.work-tab:hover,.work-tab.active{color:#252d3c;}.work-tab.active{border-bottom-color:var(--orange);}
+.work-count{color:#85909f;font-size:13px;font-weight:650;white-space:nowrap;}
+.work-filters{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.work-local-search{display:flex;align-items:center;gap:9px;flex:1 1 180px;max-width:300px;border:1px solid #e6eaf0;background:#fafbfd;padding:0 13px;border-radius:10px;min-height:40px;color:#7b8697;}
+.work-local-search input{border:0;min-width:0;width:100%;outline:0;background:transparent;font-size:14px;color:var(--ink);}
+.work-local-search input::placeholder{color:#98a2af;}
+.work-select{display:flex;align-items:center;gap:6px;border:1px solid #e6eaf0;background:#fff;border-radius:10px;padding:0 9px;color:#85909b;min-height:40px;}
+.work-select select{border:0;background:transparent;color:#545f70;outline:0;max-width:170px;font-size:13px;cursor:pointer;}
+.work-refresh{display:grid;place-items:center;border:1px solid #e7ebf0;background:#fff;color:#768397;width:40px;height:40px;border-radius:10px;}
+.work-refresh:hover,.work-select:hover{border-color:#f1b58d;}
+.work-new{min-height:40px!important;white-space:nowrap;margin-left:auto;}
+.task-card-wrap{position:relative;min-width:0;}.task-card-wrap .task-card{width:100%;height:100%;}
+.task-card-check{position:absolute;top:15px;left:15px;width:16px;height:16px;z-index:2;accent-color:var(--orange);cursor:pointer;}
+.task-card-check + .task-card .task-card-glyph{margin-left:24px;}
+.task-card-selected .task-card{border-color:#f6a46a;box-shadow:0 0 0 2px #f9dcc7;}
+.kanban-heading .icon-button{color:#98a1ae;}
+.kanban-heading .icon-button:hover{color:var(--orange);}
+.work-bulk-bar{position:fixed;z-index:35;bottom:25px;left:calc(50% + 65px);transform:translateX(-50%);background:#232638;color:white;display:flex;gap:7px;align-items:center;max-width:calc(100vw - 26px);padding:10px 13px;border-radius:18px;box-shadow:0 14px 38px #1a21374a;flex-wrap:wrap;}
+.work-bulk-bar button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:11px;padding:9px 11px;color:#f5f7fa;font-size:13px;font-weight:700;white-space:nowrap;background:#383c50;}
+.work-bulk-bar button:hover{background:#4a4e63;}.work-bulk-bar .bulk-danger{background:#f15d67;}.work-bulk-bar .bulk-danger:hover{background:#da4752;}
+.work-bulk-bar .bulk-dismiss{padding:8px;background:transparent;color:#b1b9cb;}.bulk-count{background:#4c5065;padding:4px 9px;border-radius:999px;font-size:13px;}.bulk-label{font-size:13px;font-weight:700;white-space:nowrap;}.bulk-divider{width:1px;height:25px;background:#5b6074;margin:0 4px;}
+@media(max-width:1140px){.work-filters .work-local-search{max-width:none}.work-new{margin-left:0}}
+@media(max-width:680px){.work-toolbar{padding:0 12px 13px}.work-view-tabs{gap:10px}.work-tab{padding:14px 2px;font-size:13px;gap:5px}.work-filters .work-local-search{flex:1 1 100%}.work-filters .work-select{flex:1 1 auto}.work-filters .work-select select{max-width:135px}.work-bulk-bar{left:50%;bottom:12px;justify-content:center;gap:5px}.work-bulk-bar .bulk-divider{display:none}.work-bulk-bar button{font-size:12px;padding:9px 8px}.work-new{flex:1 1 100%;}}
