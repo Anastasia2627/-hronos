@@ -35,8 +35,8 @@ export function useChronos() {
     && e.title.toLowerCase().includes(search.trim().toLowerCase())), [events, activeCalendars, typeFilter, search]);
   const filteredTasks = useMemo(() => tasks.filter((t) => (taskFilter === 'all' || (taskFilter === 'mine' && t.initials === 'AK') || (taskFilter === 'high' && t.priority === 'High')) && `${t.title} ${t.description}`.toLowerCase().includes(search.trim().toLowerCase())), [tasks, search, taskFilter]);
   const colorFor = (id) => calendars.find((c) => c.id === id)?.color || '#f18b47';
-  const selectPage = (p) => { setPage(p); setSidebarOpen(false); setNotificationsOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-  const toggleCalendar = (id) => setCalendars((list) => list.map((c) => c.id === id ? { ...c, visible: !c.visible } : c));
+  const selectPage = (p) => { setPage(p); setSearch(''); setSidebarOpen(false); setNotificationsOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const toggleCalendar = (id) => { if (id === 'personal') return; setCalendars(list => list.map(c => c.id === id ? { ...c, visible: !c.visible } : c)); };
   const changeMonth = (delta) => setSelectedDate((d) => new Date(d.getFullYear(), d.getMonth() + delta, Math.min(d.getDate(), 28)));
   const changeViewPage = (delta) => {
     setSelectedDate((d) => view === 'month' ? new Date(d.getFullYear(), d.getMonth() + delta, 1) : view === 'year' ? new Date(d.getFullYear() + delta, d.getMonth(), 1) : offsetDate(d, delta * (view === 'week' ? 7 : 1)));
@@ -71,7 +71,7 @@ export function useChronos() {
   const deleteTask = (id) => { setTasks((prev) => prev.filter((t) => t.id !== id)); setTaskDraft(null); setConfirmDelete(null); setToast('Task deleted'); };
   const saveCalendar = (form) => {
     if (!form.name.trim()) { setToast('Give your calendar a name'); return; }
-    if (form.id) setCalendars((list) => list.map((c) => c.id === form.id ? { ...form, name: form.name.trim() } : c));
+    if (form.id) setCalendars(list => list.map(c => c.id === form.id ? { ...form, name: form.name.trim(), visible: c.id === 'personal' ? true : form.visible } : c));
     else setCalendars((list) => [...list, { ...form, id: createId(), name: form.name.trim(), visible: true, readOnly: false }]);
     setCalendarDraft(null); setToast('Calendar saved');
   };

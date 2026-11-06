@@ -1,26 +1,23 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowUpDown, Filter, ListFilter, Plus, RefreshCw, Search, Star } from 'lucide-react';
+import { ArrowUpDown, Filter, Plus, Search } from 'lucide-react';
 import { emptyTask } from '../data.js';
-import { TeamSpaceSidebar } from './workspace/TeamSpaceSidebar.jsx';
 import { LANES, getLane } from './workspace/TeamStreamCard.jsx';
 import { TeamStreamColumn } from './workspace/TeamStreamColumn.jsx';
 
-export function TeamSpacePage({ tasks, onOpen, onStatus, onMoveLane, profile }) {
-  const [active,setActive] = useState('all');
-  const [search,setSearch] = useState('');
-  const [hideDone,setHideDone] = useState(false);
-  const [sortAsc,setSortAsc] = useState(true);
-  const [favorite,setFavorite] = useState(true);
-  const visible = useMemo(()=>tasks.filter(t=>(active==='all'||getLane(t)===active)&&(!hideDone||t.stage!=='done')&&`${t.title} ${t.description}`.toLowerCase().includes(search.toLowerCase())).sort((a,b)=>sortAsc?a.date.localeCompare(b.date):b.date.localeCompare(a.date)),[tasks,active,hideDone,search,sortAsc]);
-  const add = lane => onOpen({...emptyTask(),workspaceLane:lane});
-  return <div className="team-space-page"><div className="team-space-shell"><TeamSpaceSidebar active={active} onActive={setActive} onAdd={add}/>
-    <div className="team-space-main"><header className="team-space-topbar"><span className="team-board-label">My Task Board <b>#1</b></span><button className={`team-favorite ${favorite?'on':''}`} aria-label="Toggle favorite board" aria-pressed={favorite} onClick={()=>setFavorite(!favorite)}><Star size={17} fill={favorite?'currentColor':'none'}/></button>
-      <span className="team-board-spacer"/><label className="team-search"><Search size={16}/><input className="team-search-input" placeholder="Search this board" value={search} onChange={e=>setSearch(e.target.value)}/></label>
-      <button className={`team-filter-toggle ${hideDone?'on':''}`} onClick={()=>setHideDone(!hideDone)}><Filter size={16}/> {hideDone?'Active only':'All cards'}</button>
-      <button className="team-add-main" onClick={()=>add(active==='all'?'team':active)}><Plus size={17}/> New task</button>
-      <span className="team-mini-avatar">{(profile.name||'A').slice(0,1).toUpperCase()}</span>
-    </header>
-    <div className="team-space-heading"><div><span className="team-space-eyebrow">YOUR COLLABORATIVE SPACE</span><h1>Team workspace</h1><p>Keep your team ideas, plans and tasks together.</p></div><button className="team-sort-btn" onClick={()=>setSortAsc(!sortAsc)}><ArrowUpDown size={16}/> {sortAsc?'Earliest first':'Latest first'}</button></div>
+export function TeamSpacePage({tasks,onOpen,onStatus,onMoveLane}){
+  const [active,setActive]=useState('all');
+  const [query,setQuery]=useState('');
+  const [hideDone,setHideDone]=useState(false);
+  const [earliest,setEarliest]=useState(true);
+  const visible=useMemo(()=>tasks.filter(task=>(active==='all'||getLane(task)===active)&&(!hideDone||task.stage!=='done')&&`${task.title} ${task.description}`.toLowerCase().includes(query.toLowerCase())).sort((a,b)=>earliest?a.date.localeCompare(b.date):b.date.localeCompare(a.date)),[tasks,active,hideDone,query,earliest]);
+  const add=lane=>onOpen({...emptyTask(),workspaceLane:lane});
+  return <div className="team-space-page simplified-team"><div className="team-space-shell"><div className="team-space-main">
+    <header className="team-space-heading"><div><h1>Team space</h1><p>Tasks grouped by topic</p></div><button className="btn btn-primary" onClick={()=>add(active==='all'?'team':active)}><Plus size={18}/> New task</button></header>
+    <div className="team-space-topbar team-simple-toolbar"><div className="team-lane-tabs" role="group" aria-label="Group by topic"><button className={active==='all'?'selected':''} onClick={()=>setActive('all')}>All</button>{LANES.map(l=><button key={l.id} className={active===l.id?'selected':''} onClick={()=>setActive(l.id)}>{l.title}</button>)}</div>
+      <span className="team-board-spacer"/><label className="team-search"><Search size={17}/><input className="team-search-input" placeholder="Find a task" value={query} onChange={e=>setQuery(e.target.value)}/></label>
+      <button className={`team-filter-toggle ${hideDone?'on':''}`} onClick={()=>setHideDone(!hideDone)} aria-pressed={hideDone}><Filter size={16}/>{hideDone?'Active only':'All statuses'}</button>
+      <button className="team-sort-btn" onClick={()=>setEarliest(!earliest)}><ArrowUpDown size={17}/>{earliest?'Oldest':'Newest'}</button>
+    </div>
     <div className="team-streams">{LANES.filter(l=>active==='all'||l.id===active).map(l=><TeamStreamColumn key={l.id} lane={l} tasks={visible.filter(t=>getLane(t)===l.id)} onOpen={onOpen} onStatus={onStatus} onMoveLane={onMoveLane} onAdd={add}/>)}</div>
-    </div></div></div>;
+  </div></div></div>;
 }

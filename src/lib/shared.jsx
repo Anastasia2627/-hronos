@@ -17,12 +17,15 @@ export const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 export const TYPES = { arrangement: { label: 'Meeting', icon: Video, tone: 'blue' }, reminder: { label: 'Reminder', icon: Bell, tone: 'orange' }, task: { label: 'Task', icon: CheckSquare, tone: 'purple' } };
 
 export const MENU = [
-  { key: 'overview', label: 'Overview', icon: LayoutDashboard },
+  { key: 'overview', label: 'Today', icon: LayoutDashboard },
   { key: 'calendar', label: 'Calendar', icon: CalendarDays },
-  { key: 'tasks', label: 'My tasks', icon: ListTodo },
+  { key: 'tasks', label: 'Tasks', icon: ListTodo },
   { key: 'projects', label: 'Projects', icon: PanelsTopLeft },
+];
+
+export const EXTRA_MENU = [
   { key: 'team', label: 'Team space', icon: UsersRound },
-  { key: 'schedule', label: 'Schedule', icon: CalendarClock },
+  { key: 'schedule', label: 'Daily schedule', icon: CalendarClock },
 ];
 
 export const useStored = (key, initial) => {

@@ -58,7 +58,7 @@ export function SettingsPage({ profile, onProfile, calendars, onEditCal, onNewCa
               <input ref={photoInput} type="file" accept="image/*" onChange={uploadPhoto} className="ps-file-input" aria-label="Profile photo" />
             </div>
             <div className="ps-profile-name"><h1>{form.name || 'Your name'}</h1><p>{form.email || 'email@example.com'}</p></div>
-            <div className="ps-profile-chips"><span><UserRound size={14} /> Personal account</span><span className="ps-chip-success">● Local preview</span></div>
+            <div className="ps-profile-chips"><span><UserRound size={14} /> Personal account</span></div>
             {form.avatar && <button type="button" className="ps-remove-photo" onClick={() => update({ avatar: '' })}>Remove photo</button>}
           </div>
           {active === 'general' && <ProfileGeneral form={form} update={update} calendars={calendars} />}

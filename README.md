@@ -1,106 +1,51 @@
-# Chronos — Frontend concept
+# Chronos — frontend prototype
 
-A bright, calm time-planning workspace built with **React + Vite**. This is the first **frontend-only** iteration of the Chronos challenge.
+A light, simple planner built with **React + Vite**. This repository contains a **frontend-only demonstration**, not the final full-stack submission. Data is stored in the browser's `localStorage`; there is no server or database yet.
 
-## Run locally
+## Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the URL printed by Vite (usually `http://localhost:5173`).
+Open the local URL Vite prints, usually `http://localhost:5173`. To check the build: `npm run build`.
 
-To check the production build:
+## Find your way around
 
-```bash
-npm run build
-npm run preview
-```
+- **Today** — your schedule and upcoming tasks, without a duplicate full task board.
+- **Calendar** — month/week/day/year, create or edit events, search and filters. Click an empty time for quick creation; **New event** opens a full page.
+- **Tasks** — Board, List and Timeline, with collapsible filters. Create, edit, delete, move and bulk-update tasks.
+- **Projects** — project Kanban view and list view, with the same underlying tasks.
+- **More views** — Team space and Daily schedule. Both use the same saved tasks/events as the main screens.
+- **Settings** — profile, calendar management and preferences.
 
-## Included screens
+## What works / what is missing
 
-- **Overview:** today’s timeline, summary cards, mini calendar, quick links, task snapshot
-- **Calendar:** month, week, day, year; previous/next/today, search and event-type filter, calendar visibility, event preview/editing
-- **My tasks:** Kanban board, sortable/filterable table with multi-select, month milestones timeline and personal notes, status/priority badges, add/edit/delete, drag and drop
-- **Projects:** ManagePro-inspired project board with four pastel workflow columns, editable project name, local teammate badges, priority search/filter, drag-and-drop and a list view
-- **Team space:** Zaval-inspired three-stream workspace with a nested collections sidebar, timeline cards, status shortcuts, sorting, search and drag-and-drop between groups
-- **Schedule:** day-by-day event agenda and a week selector
-- **Settings:** personal profile and calendars with editable colors
+Local event/task/calendar CRUD, calendar views, filtering and profile preferences are implemented. The main personal calendar cannot be deleted or hidden. A decorative holiday example is not a complete regional holiday service.
 
-## Functional demo behavior
+**Not implemented:** real sign-up/sign-in, backend API, MongoDB/Mongoose, Docker, email invitations, real collaboration and permissions, region-aware public holidays or actual reminder notifications. Participant emails in events are not sent. See [docs/REQUIREMENTS_AUDIT.md](docs/REQUIREMENTS_AUDIT.md) for a requirement-by-requirement check against the PDF.
 
-Events, tasks, calendars and profile settings are persisted in **this browser’s localStorage**. You can create, edit, delete, filter and search items without a server. Calendars can be added, hidden, recolored or deleted (except the default / built-in calendars). Events can be repeated daily or weekly. The event can be created quickly by clicking an empty calendar cell or on a separate event-creation screen using “New event.”
-
-**Not implemented yet:** API, MongoDB/Mongoose, Docker containers, authentication, real account syncing, actual email invitations, push notifications and live public-holiday API. The Ukraine holidays calendar has a **single demonstration holiday only**; it is not a real official holiday feed. Participant email entered in a demo event is only locally recorded and **is not sent**.
-
-## Visual direction
-
-White and very pale blue-gray surfaces; restrained warm orange brand accents; soft pastel status badges; clean cards, fine borders and compact iconography. The uploaded references guide the styling. Neutral animated skeleton placeholders appear during initial navigation and manual view refresh; these are simulated in the local demo, not network operations. Typography uses locally available `Gilroy` when installed, with Google `Manrope` as a close visual fallback.
-
-## Project structure
+## Structure
 
 ```text
 src/
-  App.jsx                 # screen routing and view composition
-  hooks/useChronos.js     # frontend state, CRUD actions, filters
-  lib/shared.jsx          # calendar helpers + navigation config
-  components/
-    Sidebar.jsx           # navigation and calendars
-    Topbar.jsx            # search, alerts, profile access
-    CalendarPage.jsx      # calendar toolbar and screen
-    TaskPage.jsx          # tasks screen and view switching
-    ProjectBoardPage.jsx  # status-based project board and list
-    TeamSpacePage.jsx     # three-lane collaborative-style workspace
-    workspace/            # shared project/team cards and headers
-    TaskToolbar.jsx       # filters, sorting, view tabs
-    TaskList.jsx          # list / table view
-    TaskTimeline.jsx      # milestone timeline
-    TaskStats.jsx         # progress counters
-    TimelineNotes.jsx     # local-only notes
-    BulkActions.jsx       # multi-select toolbar
-    Skeleton.jsx          # animated loading placeholders
-    CreateEventPage.jsx   # full-page event creation
-    AppDialogs.jsx        # event, task, calendar dialogs
-    CalendarViews.jsx     # month, week, day, year grids
-    Overview.jsx          # dashboard and mini calendar
-    TaskBoard.jsx         # draggable kanban board
-    SchedulePage.jsx      # agenda / schedule
-    SettingsPage.jsx      # preferences
-    Common.jsx            # reusable modal and page heading
-    forms/                 # one form per file
-  data.js                 # demo content and date utilities
-  styles.css              # stylesheet imports, in cascade order
-  styles/                 # small CSS files by screen and role
-  main.jsx                # React entry point
+  App.jsx                    # Screen composition
+  hooks/useChronos.js        # Local app state and CRUD
+  data.js                    # Demo data, date helpers
+  components/                # Small page components
+    forms/                   # Event, task, calendar editors
+    settings/                # Settings panels
+    workspace/               # Project and team boards
+  lib/shared.jsx             # Helpers and navigation
+  styles/                    # CSS split by screen and purpose
+  styles.css                 # CSS imports
 ```
 
-The UI is deliberately frontend-only. Do not include credentials or API keys in
-this repository. Local data stays in the current browser. For a fresh demo,
-clear the browser's local site storage.
+The icon set is **lucide-react**. The interface uses **Gilroy** when it is locally installed, otherwise **Manrope**; font files are intentionally not included. Provide a properly licensed Gilroy file if you need identical rendering on every device.
 
-## Cloning a private repository
+Animated skeleton components are available in `src/components/Skeleton.jsx` for future real API loading. They are **not** artificially shown during local navigation.
 
-This repo is private. To clone it, sign in to GitHub in your Git client. From a
-terminal you can use `git clone https://github.com/Anastasia2627/-hronos.git`.
-If GitHub says *Not Found* inside a third-party editor, check that the editor
-is signed in to the correct account and has repository access; alternatively,
-download the repository ZIP using GitHub's **Code → Download ZIP** option.
+## Private GitHub repository
 
-
-## Frontend architecture (v0.2)
-
-- `src/App.jsx` — page routing and shared state wiring.
-- `src/components/` — one screen or interface section per file.
-- `src/components/forms/` — separate event/task/calendar forms.
-- `src/hooks/useChronos.js` — frontend-only actions and browser storage.
-- `src/styles/` — focused CSS modules by screen/area.
-- `src/data.js` — demo data and date helpers.
-
-**Typography:** the UI tries locally installed **Gilroy**, with Google **Manrope** as a close visual fallback. Gilroy is a commercial font and is not included in this repository. To make it available for all visitors, add properly licensed `.woff2` files to `public/fonts/` and update `src/styles/foundations.css` with their relative URLs. Do not commit unlicensed font files.
-
-**Icons:** `lucide-react`; there is no additional icon library. No backend or database is used at this stage.
-
-## Two additional workspace views
-
-**Projects** and **Team space** share the existing locally saved task data with **My tasks**. Create and edit a task in one view and see it in the others. Dragging between Projects columns changes its status; dragging between Team space columns changes its workspace group. The project title and demonstration teammate initials stay in localStorage. Teammates are visual demo entries; no invitations or real collaboration are possible without a backend.
+Clone with an authorized GitHub account, or use GitHub **Code → Download ZIP**. A third-party editor reporting `Not Found` often means it lacks permission to access this private repository.

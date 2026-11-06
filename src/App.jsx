@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { PageSkeleton } from './components/Skeleton.jsx';
+import React from 'react';
 import { TODAY, CAL_COLORS, emptyTask } from './data.js';
 import { useChronos } from './hooks/useChronos.js';
 import { Sidebar } from './components/Sidebar.jsx';
@@ -16,9 +15,6 @@ import { AppDialogs } from './components/AppDialogs.jsx';
 
 export default function App() {
   const state = useChronos();
-  const [loading, setLoading] = useState(true);
-  // Local prototype: short placeholder transition, ready for real API loading later.
-  useEffect(() => { setLoading(true); const timer = window.setTimeout(() => setLoading(false), 420); return () => window.clearTimeout(timer); }, [state.page]);
   const { calendars, tasks, profile, setProfile, page, selectedDate, setSelectedDate, view, setView,
     search, setSearch, typeFilter, setTypeFilter, showFilters, setShowFilters, eventDraft, taskFilter,
     setTaskFilter, filteredEvents, filteredTasks, sidebarOpen, setSidebarOpen, sidebarCollapsed,
@@ -37,8 +33,7 @@ export default function App() {
           notificationsOpen={notificationsOpen} setNotificationsOpen={setNotificationsOpen}
           overdue={overdue} profile={profile} selectPage={selectPage} />
         <div className="page-body">
-          {loading ? <PageSkeleton page={page} /> : <>
-          {page === 'overview' && <Overview date={TODAY} name={profile.name} events={todayEvents} tasks={tasks}
+          {page === 'overview' && <Overview date={TODAY} name={profile.name} events={todayEvents} allEvents={filteredEvents} tasks={tasks}
             calendars={calendars} upcomingCount={upcomingCount} colorFor={colorFor}
             onNewEvent={() => openEvent(null, TODAY, '09:00', 'page')} onOpenEvent={openEvent}
             onOpenTask={task => setTaskDraft({ ...task })} onPage={selectPage}
@@ -60,7 +55,6 @@ export default function App() {
             onToast={setToast} />}
           {page === 'create-event' && eventDraft && <CreateEventPage eventDraft={eventDraft}
             calendars={calendars} saveEvent={saveEvent} closeEvent={closeEvent} setConfirmDelete={setConfirmDelete} />}
-          </>}
         </div>
       </main>
       <AppDialogs state={state} />
