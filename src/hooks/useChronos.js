@@ -4,6 +4,12 @@ import { useStored, getOccurrences, initials } from '../lib/shared.jsx';
 
 export function useChronos() {
   const [calendars, setCalendars] = useStored('chronos-calendars-v1', initialCalendars);
+  // Older local demos could hide the main calendar; keep it visible on upgrade.
+  useEffect(() => {
+    setCalendars(list => list.some(c => c.id === 'personal' && !c.visible)
+      ? list.map(c => c.id === 'personal' ? { ...c, visible: true } : c)
+      : list);
+  }, [setCalendars]);
   const [events, setEvents] = useStored('chronos-events-v1', initialEvents);
   const [tasks, setTasks] = useStored('chronos-tasks-v1', initialTasks);
   const [profile, setProfile] = useStored('chronos-profile-v1', { name: 'Anastasiia', email: 'hello@chronos.demo', role: 'Creative workspace' });
