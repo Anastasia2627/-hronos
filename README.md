@@ -49,3 +49,9 @@ Animated skeleton components are available in `src/components/Skeleton.jsx` for 
 ## Private GitHub repository
 
 Clone with an authorized GitHub account, or use GitHub **Code → Download ZIP**. A third-party editor reporting `Not Found` often means it lacks permission to access this private repository.
+
+## Home launcher and status labels
+
+Home is the starting workspace: use its search to open a section or an existing task, or choose one of the six app tiles. The overview below shows today’s events and the next open tasks. All actions use the existing frontend state and local storage; no AI assistant, API or server chat is implied.
+
+Status labels use the existing To do / In progress / In review / Done stages and task priorities. In compact cards a coloured icon can expand to its full label on hover or keyboard focus. The collapsed left navigation expands on desktop hover or focus. These are display behaviours and do not add new task stages.

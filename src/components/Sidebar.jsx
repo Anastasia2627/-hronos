@@ -10,7 +10,7 @@ export function Sidebar({ sidebarOpen, sidebarCollapsed, setSidebarCollapsed, ca
   const newCalendar = () => setCalendarDraft({ name: '', description: '', color: CAL_COLORS[0], visible: true });
   return <aside className={`sidebar ${sidebarOpen ? 'sidebar-visible' : ''}`}>
     <div className="brand-row">
-      <button className="brand" onClick={() => selectPage('overview')} aria-label="Go to Today">
+      <button className="brand" onClick={() => selectPage('overview')} aria-label="Go to Home">
         <span className="brand-symbol"><span /><span /><span /><span /></span>
         <span className="brand-name">chronos<span className="brand-period">.</span></span>
       </button>

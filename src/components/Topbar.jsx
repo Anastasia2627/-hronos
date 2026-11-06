@@ -3,7 +3,7 @@ import { Search, Bell, Menu, X, ArrowRight } from 'lucide-react';
 import { initials } from '../lib/shared.jsx';
 
 const TITLES = {
-  overview: 'Today', calendar: 'Calendar', tasks: 'Tasks', projects: 'Projects',
+  overview: 'Home', calendar: 'Calendar', tasks: 'Tasks', projects: 'Projects',
   team: 'Team space', schedule: 'Daily schedule', settings: 'Settings', 'create-event': 'New event'
 };
 

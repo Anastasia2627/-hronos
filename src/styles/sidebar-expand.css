@@ -1,0 +1,15 @@
+/* Expanded navigation on roomy screens; icon-only rail gently opens on hover/focus. */
+@media(min-width:791px){
+  .sidebar-small .sidebar{overflow-x:hidden}
+  .sidebar-small .sidebar:is(:hover,:focus-within){width:235px;z-index:35;box-shadow:9px 0 28px #3547661c}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .sidebar-copy,
+  .sidebar-small .sidebar:is(:hover,:focus-within) .brand-name{display:initial!important}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .brand-row{flex-direction:row;gap:4px;margin-bottom:32px}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .nav-link{justify-content:flex-start;padding:12px 13px}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .sidebar-person{justify-content:flex-start}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .sidebar-bottom>.nav-link{justify-content:flex-start}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .sidebar-calendars{align-items:stretch}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .sidebar-calendar{padding:2px 12px}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .sidebar-heading{margin:0 3px 11px 13px}
+  .sidebar-small .sidebar:is(:hover,:focus-within) .brand-row .collapse-button{margin-left:auto}
+}

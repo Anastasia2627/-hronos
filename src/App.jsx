@@ -20,7 +20,7 @@ export default function App() {
     setTaskFilter, filteredEvents, filteredTasks, sidebarOpen, setSidebarOpen, sidebarCollapsed,
     setSidebarCollapsed, notificationsOpen, setNotificationsOpen, overdue, selectPage, toggleCalendar,
     setCalendarDraft, setTaskDraft, openEvent, changeViewPage, colorFor, moveTask, moveTaskLane, moveTasks, todayEvents,
-    upcomingCount, closeEvent, saveEvent, setConfirmDelete, setToast } = state;
+    closeEvent, saveEvent, setConfirmDelete, setToast } = state;
 
   return (
     <div className={`app-shell ${sidebarCollapsed ? 'sidebar-small' : ''}`}>
@@ -33,12 +33,10 @@ export default function App() {
           notificationsOpen={notificationsOpen} setNotificationsOpen={setNotificationsOpen}
           overdue={overdue} profile={profile} selectPage={selectPage} />
         <div className="page-body">
-          {page === 'overview' && <Overview date={TODAY} name={profile.name} events={todayEvents} allEvents={filteredEvents} tasks={tasks}
-            calendars={calendars} upcomingCount={upcomingCount} colorFor={colorFor}
+          {page === 'overview' && <Overview date={TODAY} name={profile.name} events={todayEvents} tasks={tasks} colorFor={colorFor}
             onNewEvent={() => openEvent(null, TODAY, '09:00', 'page')} onOpenEvent={openEvent}
             onOpenTask={task => setTaskDraft({ ...task })} onPage={selectPage}
-            onAddTask={() => setTaskDraft(emptyTask())}
-            onJumpDate={date => { setSelectedDate(date); selectPage('calendar'); }} />}
+            onAddTask={() => setTaskDraft(emptyTask())} />}
           {page === 'calendar' && <CalendarPage selectedDate={selectedDate} setSelectedDate={setSelectedDate}
             view={view} setView={setView} filteredEvents={filteredEvents} colorFor={colorFor}
             openEvent={openEvent} changeViewPage={changeViewPage} typeFilter={typeFilter}
