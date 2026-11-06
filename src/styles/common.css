@@ -1,0 +1,133 @@
+.page-body {
+  max-width: 1650px;
+  margin: 0 auto;
+  padding: 36px 38px 70px;
+}
+
+.eyebrow {
+  display: inline-block;
+  letter-spacing: .115em;
+  font-size: 10px;
+  color: #ed9b67;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.page-heading,.overview-greeting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.page-heading h1,.overview-greeting h1 {
+  font-size: 31px;
+  line-height: 1.22;
+  font-weight: 800;
+  color: #232c42;
+}
+
+.page-heading p,.overview-greeting p {
+  font-size: 13px;
+  color: #9099a8;
+  margin-top: 10px;
+}
+
+.page-actions {
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 17px;
+  min-height: 40px;
+  border-radius: 9px;
+  font-weight: 750;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: transform .12s,background .15s,border .15s;
+}
+
+.btn:active {
+  transform: scale(.985);
+}
+
+.btn-primary {
+  background: #f38c49;
+  color: white;
+  box-shadow: 0 5px 14px #f49a5e26;
+}
+
+.btn-primary:hover {
+  background: #e77d37;
+}
+
+.btn-secondary {
+  background: #f5f6fa;
+  border: 1px solid #e9edf3;
+  color: #6d7587;
+}
+
+.btn-secondary:hover {
+  background: #eceff5;
+}
+
+.btn-today {
+  padding: 8px 15px;
+  min-height: 34px;
+  background: #fff;
+  border: 1px solid #e9edf2;
+  color: #616c80;
+}
+
+.btn-quiet {
+  background: #fff;
+  border: 1px solid #eef0f5;
+  color: #738093;
+  padding: 8px 12px;
+  min-height: 34px;
+}
+
+.btn-filter-active {
+  background: var(--orange-soft);
+  color: var(--orange);
+}
+
+.btn-danger {
+  background: #e86969;
+  color: #fff;
+}
+
+.btn-outline-danger {
+  color: #e77879;
+  background: #fff3f4;
+  border: 1px solid #ffe3e4;
+}
+
+.btn-outline-danger:hover {
+  background: #ffe7e9;
+}
+
+.text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ed8c52;
+  font-weight: 750;
+  font-size: 12px;
+}
+
+.text-button:hover {
+  color: #c96e37;
+}
+
+.surface,.stat-card,.settings-surface {
+  background: #fff;
+  border: 1px solid #edf0f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 17px #253a5610;
+}

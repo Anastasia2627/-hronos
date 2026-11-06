@@ -40,8 +40,37 @@ White and very pale blue-gray surfaces; restrained warm orange brand accents; so
 
 ```text
 src/
-  App.jsx        # screens, layout, event/task/calendar editors
-  data.js        # seed data, calendar date helpers
-  styles.css     # visual system and responsive layout
-  main.jsx       # React entry point
+  App.jsx                 # screen routing and view composition
+  hooks/useChronos.js     # frontend state, CRUD actions, filters
+  lib/shared.jsx          # calendar helpers + navigation config
+  components/
+    Sidebar.jsx           # navigation and calendars
+    Topbar.jsx            # search, alerts, profile access
+    CalendarPage.jsx      # calendar toolbar and screen
+    TaskPage.jsx          # task board screen
+    CreateEventPage.jsx   # full-page event creation
+    AppDialogs.jsx        # event, task, calendar dialogs
+    CalendarViews.jsx     # month, week, day, year grids
+    Overview.jsx          # dashboard and mini calendar
+    TaskBoard.jsx         # draggable kanban board
+    SchedulePage.jsx      # agenda / schedule
+    SettingsPage.jsx      # preferences
+    Common.jsx            # reusable modal and page heading
+    forms/                 # one form per file
+  data.js                 # demo content and date utilities
+  styles.css              # stylesheet imports, in cascade order
+  styles/                 # small CSS files by screen and role
+  main.jsx                # React entry point
 ```
+
+The UI is deliberately frontend-only. Do not include credentials or API keys in
+this repository. Local data stays in the current browser. For a fresh demo,
+clear the browser's local site storage.
+
+## Cloning a private repository
+
+This repo is private. To clone it, sign in to GitHub in your Git client. From a
+terminal you can use `git clone https://github.com/Anastasia2627/-hronos.git`.
+If GitHub says *Not Found* inside a third-party editor, check that the editor
+is signed in to the correct account and has repository access; alternatively,
+download the repository ZIP using GitHub's **Code → Download ZIP** option.

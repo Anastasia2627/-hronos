@@ -1,0 +1,264 @@
+.schedule-metric span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.schedule-metric strong {
+  font-size: 12px;
+}
+
+.schedule-metric small {
+  font-size: 10px;
+  color: #a3adba;
+}
+
+.soft-quote {
+  background: #edf4ff;
+  border: 1px solid #e5edfc;
+  color: #6894db;
+  border-radius: 13px;
+  padding: 23px;
+}
+
+.soft-quote strong {
+  display: block;
+  color: #52698a;
+  font-size: 13px;
+  letter-spacing: -.02em;
+  margin-top: 13px;
+}
+
+.soft-quote p {
+  font-size: 11px;
+  color: #95a6c1;
+  line-height: 1.65;
+  margin-top: 8px;
+}
+
+.empty-schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #aec1d1;
+  min-height: 220px;
+}
+
+.empty-schedule strong {
+  color: #606e83;
+  font-size: 13px;
+}
+
+.empty-schedule p {
+  color: #a7b2bf;
+  font-size: 11px;
+}
+
+.empty-schedule.large {
+  min-height: 300px;
+}
+
+.settings-surface {
+  overflow: hidden;
+}
+
+.profile-cover {
+  height: 205px;
+  background: radial-gradient(circle at 12% 63%,#d5eaff 0,transparent 30%),radial-gradient(ellipse at 89% 34%,#d4caff 0,transparent 35%),radial-gradient(ellipse at 70% 94%,#c6dffc 0,transparent 45%),linear-gradient(120deg,#eef7ff,#eff0ff 55%,#f6f1ff);
+  position: relative;
+  overflow: hidden;
+  margin: 23px 23px 0;
+  border-radius: 13px;
+}
+
+.cover-blob {
+  position: absolute;
+  border: 2px solid #ffffff9c;
+  border-radius: 45%;
+  transform: rotate(35deg);
+}
+
+.cover-blob-one {
+  width: 450px;
+  height: 280px;
+  left: -100px;
+  top: -130px;
+}
+
+.cover-blob-two {
+  width: 650px;
+  height: 480px;
+  right: -100px;
+  top: -230px;
+}
+
+.profile-identity {
+  display: flex;
+  align-items: flex-end;
+  gap: 17px;
+  padding: 0 55px;
+  margin-top: -41px;
+  position: relative;
+}
+
+.profile-avatar {
+  height: 83px;
+  width: 83px;
+  border: 5px solid white;
+  border-radius: 25px;
+  box-shadow: 0 3px 18px #4d56772b;
+  font-size: 23px;
+}
+
+.profile-identity h2 {
+  font-size: 21px;
+  padding-bottom: 4px;
+}
+
+.profile-identity p {
+  font-size: 11px;
+  color: #a4adba;
+}
+
+.profile-identity>div {
+  padding-bottom: 8px;
+}
+
+.settings-content {
+  padding: 38px 55px 45px;
+  max-width: 990px;
+}
+
+.settings-section {
+  border-bottom: 1px solid #e9edf3;
+  padding-bottom: 32px;
+  margin-bottom: 30px;
+}
+
+.settings-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 23px;
+}
+
+.settings-section-heading h3 {
+  font-size: 16px;
+}
+
+.settings-section-heading p {
+  font-size: 11px;
+  color: #a3adba;
+  margin-top: 6px;
+}
+
+.settings-fields {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 18px;
+}
+
+.settings-field-wide {
+  grid-column: span 2;
+}
+
+.settings-calendar-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eff1f6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.settings-calendar-list button {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 13px;
+  padding: 13px 16px;
+  border-bottom: 1px solid #eff1f6;
+}
+
+.settings-calendar-list button:last-child {
+  border: 0;
+}
+
+.settings-calendar-list button:hover {
+  background: #fbfcfe;
+}
+
+.setting-cal-dot {
+  height: 17px;
+  width: 17px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.settings-calendar-list button>span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.settings-calendar-list strong {
+  font-size: 12px;
+}
+
+.settings-calendar-list small {
+  font-size: 10px;
+  color: #a0a9b6;
+}
+
+.settings-calendar-list button>svg {
+  color: #a8b2bf;
+}
+
+.local-note {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  color: #8192aa;
+  background: #f2f7ff;
+  border-radius: 10px;
+  padding: 13px 15px;
+  line-height: 1.5;
+}
+
+.local-note svg {
+  flex-shrink: 0;
+}
+
+.local-note.inline-note {
+  margin-top: 10px;
+}
+
+.create-page {
+  max-width: 890px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #909bab;
+  font-size: 12px;
+  margin-bottom: 23px;
+}
+
+.back-link:hover {
+  color: #e88949;
+}
+
+.create-card {
+  padding: 29px 32px;
+  background: #fff;
+  border: 1px solid #edf0f5;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px #2a34450b;
+}

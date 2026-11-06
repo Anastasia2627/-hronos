@@ -1,0 +1,77 @@
+:root {
+  font-family: 'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color: #242a3b;
+  background: #f7f9fd;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #242a3b;
+  --muted: #9098a9;
+  --line: #edf0f6;
+  --soft: #f7f9fd;
+  --orange: #f18b47;
+  --orange-strong: #ec7d35;
+  --orange-soft: #fff3e9;
+  --blue: #69a9ed;
+  --blue-soft: #edf7ff;
+  --purple: #9378e8;
+  --purple-soft: #f2edff;
+  --green: #4bba82;
+  --green-soft: #eaf9f0;
+  --sidebar-width: 246px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,input,select,textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .65;
+}
+
+button,input,select,textarea {
+  outline-color: #f6b685;
+}
+
+button {
+  border: 0;
+  background: none;
+  color: inherit;
+}
+
+p,h1,h2,h3 {
+  margin: 0;
+}
+
+h1,h2,h3 {
+  letter-spacing: -.035em;
+}
+
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
+  outline: 3px solid #f7bc92;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #ffe0c7;
+  color: #2d2c2b;
+}
+

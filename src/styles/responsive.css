@@ -1,0 +1,465 @@
+@keyframes popIn {
+  from {
+    transform: translateY(12px) scale(.98);
+    opacity: .6;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.mobile-shade {
+  display: none;
+}
+
+.sidebar-small {
+  --sidebar-width: 77px;
+}
+
+.sidebar-small .sidebar-copy,.sidebar-small .brand-name,.sidebar-small .workspace-pill>svg {
+  display: none !important;
+}
+
+.sidebar-small .sidebar {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.sidebar-small .brand-row {
+  flex-direction: column;
+  gap: 19px;
+  margin-bottom: 20px;
+}
+
+.sidebar-small .workspace-pill {
+  padding: 8px;
+  justify-content: center;
+}
+
+.sidebar-small .nav-link {
+  justify-content: center;
+  padding: 12px;
+}
+
+.sidebar-small .sidebar-calendars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-small .sidebar-calendar {
+  padding: 5px;
+}
+
+.sidebar-small .sidebar-person {
+  justify-content: center;
+}
+
+.sidebar-small .sidebar-bottom>.nav-link {
+  justify-content: center;
+}
+
+.sidebar-small .sidebar-heading {
+  margin: 0 0 10px;
+}
+
+.sidebar-small .add-calendar {
+  display: none;
+}
+
+.sidebar-small .brand-symbol {
+  flex-shrink: 0;
+}
+
+@media (max-width:1300px) {
+  .page-body {
+    padding: 30px 28px 65px;
+  }
+  .topbar {
+    padding: 0 28px;
+  }
+  .kanban-board {
+    gap: 10px;
+  }
+  .kanban-column {
+    padding: 12px 9px;
+  }
+  .task-card {
+    padding: 11px 9px;
+  }
+  .overview-middle {
+    grid-template-columns: minmax(0,1.45fr) minmax(275px,1fr);
+  }
+}
+
+@media (max-width:1120px) {
+  .sidebar {
+    width: 210px;
+  }
+  .app-shell {
+    --sidebar-width: 210px;
+  }
+  .app-shell.sidebar-small {
+    --sidebar-width: 77px;
+  }
+  .overview-middle {
+    grid-template-columns: 1fr;
+  }
+  .overview-side {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .quick-card {
+    min-height: unset;
+  }
+  .kanban-board {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .kanban-compact {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+  }
+  .schedule-layout {
+    grid-template-columns: 1fr;
+  }
+  .schedule-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .year-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .calendar-toolbar {
+    flex-wrap: wrap;
+  }
+  .calendar-tools {
+    margin-left: auto;
+  }
+}
+
+@media (max-width:790px) {
+  .app-shell {
+    --sidebar-width: 0px;
+  }
+  .sidebar {
+    transform: translateX(-100%);
+    width: 258px;
+    box-shadow: 0 15px 40px transparent;
+  }
+  .sidebar.sidebar-visible {
+    transform: translateX(0);
+    box-shadow: 0 15px 45px #1b263c28;
+  }
+  .sidebar-small {
+    --sidebar-width: 0px;
+  }
+  .sidebar-small .sidebar {
+    width: 258px;
+    padding: 25px 18px 17px;
+  }
+  .sidebar-small .sidebar-copy,.sidebar-small .brand-name,.sidebar-small .workspace-pill>svg {
+    display: initial !important;
+  }
+  .sidebar-small .brand-row {
+    flex-direction: row;
+    gap: 4px;
+    margin-bottom: 29px;
+  }
+  .sidebar-small .workspace-pill {
+    justify-content: flex-start;
+    padding: 10px 11px;
+  }
+  .sidebar-small .nav-link {
+    justify-content: flex-start;
+    padding: 12px 13px;
+  }
+  .sidebar-small .sidebar-calendars {
+    align-items: stretch;
+  }
+  .sidebar-small .sidebar-calendar {
+    padding: 2px 12px;
+  }
+  .sidebar-small .sidebar-person {
+    justify-content: flex-start;
+  }
+  .sidebar-small .sidebar-bottom>.nav-link {
+    justify-content: flex-start;
+  }
+  .sidebar-small .add-calendar {
+    display: flex;
+  }
+  .mobile-shade {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: #1d294d55;
+    z-index: 19;
+  }
+  .mobile-menu {
+    display: grid;
+    margin-left: -7px;
+  }
+  .topbar {
+    padding: 0 19px;
+    height: 64px;
+  }
+  .global-search {
+    width: 205px;
+  }
+  .page-body {
+    padding: 26px 20px 55px;
+  }
+  .overview-greeting h1,.page-heading h1 {
+    font-size: 28px;
+  }
+  .stat-grid {
+    gap: 11px;
+  }
+  .stat-card {
+    padding: 16px;
+    min-height: 115px;
+  }
+  .stat-icon {
+    height: 40px;
+    width: 40px;
+  }
+  .stat-card strong {
+    font-size: 25px;
+  }
+}
+
+@media (max-width:580px) {
+  .page-body {
+    padding: 24px 13px 50px;
+  }
+  .topbar {
+    gap: 8px;
+    padding: 0 15px;
+  }
+  .topbar-left {
+    gap: 7px;
+  }
+  .global-search {
+    width: 38px;
+    padding: 0 9px;
+    justify-content: center;
+  }
+  .global-search input,.global-search kbd {
+    display: none;
+  }
+  .topbar-right {
+    gap: 8px;
+  }
+  .topbar-avatar {
+    width: 32px;
+    height: 32px;
+  }
+  .overview-greeting,.page-heading {
+    align-items: flex-start;
+  }
+  .overview-greeting h1,.page-heading h1 {
+    font-size: 25px;
+  }
+  .page-heading p,.overview-greeting p {
+    line-height: 1.6;
+  }
+  .page-actions .btn,.overview-greeting>.btn {
+    font-size: 0;
+    gap: 0;
+    padding: 11px;
+    min-width: 41px;
+    height: 41px;
+  }
+  .page-actions .btn svg,.overview-greeting>.btn svg {
+    width: 20px;
+    height: 20px;
+  }
+  .stat-grid {
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+  }
+  .stat-card {
+    min-height: 103px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 12px;
+  }
+  .stat-card strong {
+    font-size: 22px;
+  }
+  .stat-label {
+    font-size: 9px;
+  }
+  .stat-card small {
+    display: none;
+  }
+  .stat-icon {
+    height: 28px;
+    width: 28px;
+    border-radius: 8px;
+  }
+  .stat-icon svg {
+    width: 16px;
+  }
+  .stat-arrow {
+    top: 12px;
+    right: 10px;
+    width: 13px;
+  }
+  .overview-side {
+    grid-template-columns: 1fr;
+  }
+  .today-card {
+    min-height: unset;
+    padding: 19px 15px;
+  }
+  .timeline-item {
+    gap: 10px;
+  }
+  .timeline-time {
+    width: 58px;
+    font-size: 10px;
+  }
+  .timeline-type {
+    height: 32px;
+    width: 32px;
+  }
+  .timeline-description strong {
+    font-size: 11px;
+  }
+  .timeline-item>.status-pill {
+    font-size: 9px;
+    padding: 5px 7px;
+  }
+  .insight-strip {
+    line-height: 1.4;
+  }
+  .kanban-board,.kanban-compact {
+    grid-template-columns: 1fr;
+  }
+  .kanban-column,.kanban-compact .kanban-column {
+    min-height: auto;
+  }
+  .kanban-heading {
+    padding-bottom: 9px;
+  }
+  .task-card {
+    min-height: 125px;
+  }
+  .calendar-toolbar {
+    padding: 15px 12px;
+    gap: 13px;
+  }
+  .date-controls {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .date-controls strong {
+    font-size: 15px;
+    margin-left: 3px;
+  }
+  .calendar-tools {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .segmented button {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+  .calendar-footer {
+    flex-direction: column;
+  }
+  .schedule-main {
+    padding: 16px 12px;
+  }
+  .schedule-main-header h2 {
+    font-size: 18px;
+  }
+  .schedule-days {
+    gap: 2px;
+  }
+  .schedule-days button {
+    padding: 8px 1px;
+  }
+  .schedule-event-row {
+    gap: 8px;
+  }
+  .schedule-event-time {
+    width: 69px;
+  }
+  .schedule-event-icon {
+    height: 31px;
+    width: 31px;
+  }
+  .schedule-side {
+    grid-template-columns: 1fr;
+  }
+  .profile-cover {
+    margin: 12px 12px 0;
+    height: 140px;
+  }
+  .profile-identity {
+    padding: 0 20px;
+  }
+  .profile-avatar {
+    height: 65px;
+    width: 65px;
+    border-radius: 18px;
+  }
+  .settings-content {
+    padding: 30px 20px;
+  }
+  .settings-fields {
+    grid-template-columns: 1fr;
+  }
+  .settings-field-wide {
+    grid-column: auto;
+  }
+  .settings-section-heading {
+    align-items: flex-start;
+  }
+  .settings-calendar-list .status-pill {
+    display: none;
+  }
+  .year-grid {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .modal-backdrop {
+    padding: 6px;
+    align-items: flex-end;
+  }
+  .modal-dialog {
+    max-height: 96vh;
+    padding: 21px 17px;
+    border-radius: 16px 16px 0 0;
+  }
+  .form-row {
+    gap: 9px;
+  }
+  .field input,.field textarea,.field select {
+    padding: 10px 9px;
+    font-size: 11px;
+  }
+  .form-actions {
+    flex-wrap: wrap;
+  }
+  .form-buttons {
+    gap: 6px;
+  }
+  .form-buttons .btn {
+    padding: 10px 11px;
+  }
+  .create-card {
+    padding: 20px 14px;
+  }
+  .type-choice {
+    padding: 9px 7px;
+    font-size: 10px;
+  }
+  .notification-panel {
+    right: -41px;
+    width: 290px;
+  }
+}

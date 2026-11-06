@@ -1,0 +1,140 @@
+.main-area {
+  margin-left: var(--sidebar-width);
+  min-width: 0;
+  min-height: 100vh;
+  transition: margin-left .25s;
+}
+
+.topbar {
+  height: 73px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #edf0f6;
+  padding: 0 37px;
+  position: sticky;
+  top: 0;
+  z-index: 11;
+}
+
+.topbar-left,.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.topbar-left {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.topbar-left strong {
+  font-size: 12.5px;
+  font-weight: 750;
+}
+
+.muted-crumb,.crumb-chevron {
+  color: #a4adbc;
+}
+
+.topbar-right {
+  gap: 15px;
+}
+
+.global-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #f7f9fc;
+  border: 1px solid #f1f3f8;
+  color: #a1aaba;
+  border-radius: 9px;
+  width: min(300px,28vw);
+  height: 36px;
+  padding: 0 11px;
+}
+
+.global-search input {
+  background: transparent;
+  outline: none;
+  border: none;
+  min-width: 0;
+  width: 100%;
+  color: #464f63;
+  font-size: 12px;
+}
+
+.global-search input::placeholder {
+  color: #adb5c3;
+}
+
+.global-search kbd {
+  white-space: nowrap;
+  font-size: 10px;
+  color: #a8b2be;
+  font-family: inherit;
+}
+
+.header-action {
+  height: 37px;
+  width: 37px;
+  border: 1px solid #eef0f6;
+  background: #fff;
+  position: relative;
+}
+
+.notification-dot {
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border: 1px solid white;
+  background: #f48b4c;
+  border-radius: 100%;
+}
+
+.topbar-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 11px;
+}
+
+.topbar-notify {
+  position: relative;
+}
+
+.notification-panel {
+  position: absolute;
+  right: -52px;
+  top: 46px;
+  width: 310px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 0 15px 45px #24324b20;
+  border: 1px solid #eaf0f5;
+  border-radius: 13px;
+  z-index: 30;
+}
+
+.notification-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.notification-panel p {
+  font-size: 12px;
+  color: #8d96a5;
+  margin: 14px 0;
+}
+
+.mobile-menu {
+  display: none;
+}
+

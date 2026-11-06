@@ -1,0 +1,266 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: #161e3366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(3px);
+  animation: fadeIn .12s ease-out;
+}
+
+.modal-dialog {
+  background: white;
+  border-radius: 17px;
+  box-shadow: 0 25px 70px #0e172e35;
+  width: 100%;
+  max-height: min(93vh,920px);
+  overflow: auto;
+  padding: 25px 27px 23px;
+  animation: popIn .15s ease-out;
+}
+
+.modal-medium {
+  max-width: 535px;
+}
+
+.modal-small {
+  max-width: 410px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.modal-header h2 {
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.modal-header p {
+  font-size: 11px;
+  color: #9da9b6;
+  margin-top: 6px;
+}
+
+.close-modal {
+  background: #f6f7fa;
+}
+
+.editor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editor-type-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.type-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #ebeff5;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: #98a2b2;
+  background: #fafbfd;
+  font-size: 11px;
+  font-weight: 750;
+  flex: 1;
+}
+
+.type-choice.type-selected.type-blue {
+  border-color: #d5eafa;
+  background: #edf7ff;
+  color: #4399df;
+}
+
+.type-choice.type-selected.type-orange {
+  border-color: #ffe2cb;
+  background: #fff3e9;
+  color: #f08e4c;
+}
+
+.type-choice.type-selected.type-purple {
+  border-color: #e0d8fb;
+  background: #f3efff;
+  color: #8f70dc;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field>span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #626e81;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.field>span em {
+  color: #f28b45;
+  font-style: normal;
+}
+
+.field>span small {
+  color: #adb6c2;
+  font-weight: 500;
+}
+
+.field input,.field textarea,.field select {
+  width: 100%;
+  border: 1px solid #e8edf3;
+  background: #fbfcfe;
+  border-radius: 9px;
+  padding: 12px 13px;
+  min-height: 42px;
+  color: #344055;
+  font-size: 12px;
+  outline: none;
+  transition: border-color .15s,background .15s;
+}
+
+.field input:focus,.field select:focus,.field textarea:focus {
+  border-color: #f6b483;
+  background: #fff;
+}
+
+.field input::placeholder,.field textarea::placeholder {
+  color: #b4bdc8;
+}
+
+.field textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field-title input {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.select-with-dot {
+  position: relative;
+}
+
+.select-with-dot i {
+  width: 10px;
+  height: 10px;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  transform: translateY(-50%);
+}
+
+.select-with-dot select {
+  padding-left: 33px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eff1f6;
+  margin-top: 7px;
+  padding-top: 20px;
+  gap: 10px;
+}
+
+.form-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 9px;
+  justify-content: flex-end;
+}
+
+.color-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 5px 0;
+}
+
+.color-choices button {
+  width: 31px;
+  height: 31px;
+  border-radius: 9px;
+  background: var(--choice-color);
+  color: white;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #dfe5ee;
+}
+
+.color-choices button.color-selected {
+  box-shadow: 0 0 0 2px var(--choice-color);
+  border-color: #fff;
+}
+
+.modal-small .modal-actions {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.toast {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 110;
+  background: #2b3c4f;
+  color: #fff;
+  padding: 13px 14px 13px 16px;
+  border-radius: 11px;
+  box-shadow: 0 12px 40px #1e2f4640;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.toast>svg {
+  color: #7fdfa8;
+}
+
+.toast button {
+  display: grid;
+  place-items: center;
+  color: #aab8c6;
+  margin-left: 9px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
