@@ -2,7 +2,6 @@
 .home-page{max-width:1270px;margin:0 auto;padding-bottom:35px}
 .home-welcome{display:flex;align-items:center;flex-direction:column;text-align:center;padding:48px 16px 24px;position:relative}
 .home-welcome:before{content:"";position:absolute;inset:-30px 8% 0;z-index:-1;background:radial-gradient(ellipse at 50% 12%,#dfe9ff85,transparent 62%);pointer-events:none}
-.home-kicker{font-size:12px;letter-spacing:.15em;font-weight:800;color:#8a97af}
 .home-welcome h1{font-size:clamp(29px,3.5vw,43px);line-height:1.15;font-weight:850;color:#202b42;letter-spacing:-.055em;margin:12px 0 9px}
 .home-period{color:var(--orange)}
 .home-welcome-copy p{font-size:15px;color:#778398;line-height:1.55}

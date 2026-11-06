@@ -15,3 +15,22 @@
 .adaptive-pill-compact:is(:hover,:focus-visible) .adaptive-pill-label{max-width:145px;opacity:1}
 @media(max-width:1090px){.adaptive-pill-responsive{gap:0;padding:7px;min-width:30px;justify-content:center}.adaptive-pill-responsive .adaptive-pill-label{max-width:0;opacity:0}.adaptive-pill-responsive:is(:hover,:focus-visible){gap:8px;padding:6px 11px}.adaptive-pill-responsive:is(:hover,:focus-visible) .adaptive-pill-label{max-width:145px;opacity:1}}
 @media(hover:none){.adaptive-pill-compact:focus-visible .adaptive-pill-label,.adaptive-pill-responsive:focus-visible .adaptive-pill-label{max-width:145px;opacity:1}}
+
+/* Keyboard focus on the containing card also reveals its compact badge. */
+.task-card:focus-visible .adaptive-pill-compact,
+.project-card-main:focus-visible .adaptive-pill-compact,
+.home-focus-row:focus-visible .adaptive-pill-compact,
+.kanban-heading:focus-within .adaptive-pill-responsive,
+.project-col-heading:focus-within .adaptive-pill-responsive{gap:8px;padding:6px 11px}
+.task-card:focus-visible .adaptive-pill-compact .adaptive-pill-label,
+.project-card-main:focus-visible .adaptive-pill-compact .adaptive-pill-label,
+.home-focus-row:focus-visible .adaptive-pill-compact .adaptive-pill-label,
+.kanban-heading:focus-within .adaptive-pill-responsive .adaptive-pill-label,
+.project-col-heading:focus-within .adaptive-pill-responsive .adaptive-pill-label{max-width:145px;opacity:1}
+.project-column,.kanban-column{container-type:inline-size}
+@container (max-width:250px){
+  .adaptive-pill-responsive{gap:0;padding:7px;min-width:30px;justify-content:center}
+  .adaptive-pill-responsive .adaptive-pill-label{max-width:0;opacity:0}
+  .adaptive-pill-responsive:hover{gap:8px;padding:6px 11px}
+  .adaptive-pill-responsive:hover .adaptive-pill-label{max-width:145px;opacity:1}
+}

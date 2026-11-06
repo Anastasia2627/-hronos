@@ -9,7 +9,6 @@ export function Overview({ date, name, events, tasks, colorFor, onNewEvent, onOp
   return <div className="home-page">
     <section className="home-welcome">
       <div className="home-welcome-copy">
-        <span className="home-kicker">YOUR WORKSPACE</span>
         <h1>Welcome back, {firstName}<span className="home-period">.</span></h1>
         <p>Your plans, together in one place.</p>
       </div>
