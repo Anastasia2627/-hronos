@@ -5,11 +5,11 @@
 }
 
 .schedule-metric strong {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .schedule-metric small {
-  font-size: 10px;
+  font-size: 13px;
   color: #a3adba;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .soft-quote p {
-  font-size: 11px;
+  font-size: 13px;
   color: #95a6c1;
   line-height: 1.65;
   margin-top: 8px;
@@ -53,7 +53,7 @@
 
 .empty-schedule p {
   color: #a7b2bf;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .empty-schedule.large {
@@ -118,7 +118,7 @@
 }
 
 .profile-identity p {
-  font-size: 11px;
+  font-size: 13px;
   color: #a4adba;
 }
 
@@ -150,7 +150,7 @@
 }
 
 .settings-section-heading p {
-  font-size: 11px;
+  font-size: 13px;
   color: #a3adba;
   margin-top: 6px;
 }
@@ -205,11 +205,11 @@
 }
 
 .settings-calendar-list strong {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .settings-calendar-list small {
-  font-size: 10px;
+  font-size: 13px;
   color: #a0a9b6;
 }
 
@@ -221,7 +221,7 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 11px;
+  font-size: 13px;
   color: #8192aa;
   background: #f2f7ff;
   border-radius: 10px;
@@ -247,7 +247,7 @@
   align-items: center;
   gap: 6px;
   color: #909bab;
-  font-size: 12px;
+  font-size: 13px;
   margin-bottom: 23px;
 }
 

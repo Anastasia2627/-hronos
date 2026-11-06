@@ -289,7 +289,7 @@
     font-size: 22px;
   }
   .stat-label {
-    font-size: 9px;
+    font-size: 13px;
   }
   .stat-card small {
     display: none;
@@ -319,17 +319,17 @@
   }
   .timeline-time {
     width: 58px;
-    font-size: 10px;
+    font-size: 13px;
   }
   .timeline-type {
     height: 32px;
     width: 32px;
   }
   .timeline-description strong {
-    font-size: 11px;
+    font-size: 13px;
   }
   .timeline-item>.status-pill {
-    font-size: 9px;
+    font-size: 13px;
     padding: 5px 7px;
   }
   .insight-strip {
@@ -364,7 +364,7 @@
     justify-content: space-between;
   }
   .segmented button {
-    font-size: 10px;
+    font-size: 13px;
     padding: 7px 9px;
   }
   .calendar-footer {
@@ -440,7 +440,7 @@
   }
   .field input,.field textarea,.field select {
     padding: 10px 9px;
-    font-size: 11px;
+    font-size: 13px;
   }
   .form-actions {
     flex-wrap: wrap;
@@ -456,7 +456,7 @@
   }
   .type-choice {
     padding: 9px 7px;
-    font-size: 10px;
+    font-size: 13px;
   }
   .notification-panel {
     right: -41px;

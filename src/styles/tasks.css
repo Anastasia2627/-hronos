@@ -20,7 +20,7 @@
 }
 
 .kanban-heading strong {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 800;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -56,7 +56,7 @@
 }
 
 .count-pill {
-  font-size: 10px;
+  font-size: 13px;
   background: #fff;
   padding: 4px 7px;
   border-radius: 7px;
@@ -81,9 +81,9 @@
   border-left: 3px solid var(--task-accent);
   box-shadow: 0 3px 10px #2936560b;
   border-radius: 9px;
-  min-height: 148px;
+  min-height: 167px;
   text-align: left;
-  padding: 13px 12px 10px;
+  padding: 15px 14px 13px;
   transition: transform .16s,box-shadow .16s;
   display: flex;
   flex-direction: column;
@@ -116,11 +116,11 @@
 }
 
 .task-priority {
-  font-size: 9px;
+  font-size: 13px;
   border-radius: 6px;
   padding: 4px 6px;
   background: #f7f8fc;
-  color: #9da5b2;
+  color: #697789;
   font-weight: 800;
 }
 
@@ -135,15 +135,15 @@
 }
 
 .task-card>strong {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 800;
   color: #30384a;
   line-height: 1.5;
 }
 
 .task-card>p {
-  color: #99a1ae;
-  font-size: 10px;
+  color: #68768b;
+  font-size: 13px;
   line-height: 1.5;
   margin-top: 4px;
   margin-bottom: 18px;
@@ -167,7 +167,7 @@
   border-radius: 50%;
   color: var(--task-accent);
   background: color-mix(in srgb,var(--task-accent) 15%,white);
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 850;
 }
 
@@ -175,8 +175,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 9px;
-  color: #a1a9b6;
+  font-size: 13px;
+  color: #707d90;
   margin-left: auto;
   white-space: nowrap;
 }
@@ -192,10 +192,10 @@
   gap: 6px;
   border: 1px dashed #e5e9f0;
   border-radius: 9px;
-  color: #9da7b4;
+  color: #798598;
   background: #fff;
   min-height: 42px;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .add-task-slot:hover {
@@ -204,8 +204,8 @@
 }
 
 .more-task-count {
-  font-size: 10px;
-  color: #9fa8b5;
+  font-size: 13px;
+  color: #78869b;
   text-align: center;
   padding: 5px;
 }

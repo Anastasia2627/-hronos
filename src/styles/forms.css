@@ -44,7 +44,7 @@
 }
 
 .modal-header p {
-  font-size: 11px;
+  font-size: 13px;
   color: #9da9b6;
   margin-top: 6px;
 }
@@ -75,7 +75,7 @@
   border-radius: 9px;
   color: #98a2b2;
   background: #fafbfd;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 750;
   flex: 1;
 }
@@ -110,7 +110,7 @@
   align-items: center;
   gap: 6px;
   color: #626e81;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 750;
 }
 
@@ -132,7 +132,7 @@
   padding: 12px 13px;
   min-height: 42px;
   color: #344055;
-  font-size: 12px;
+  font-size: 13px;
   outline: none;
   transition: border-color .15s,background .15s;
 }
@@ -241,7 +241,7 @@
   display: flex;
   align-items: center;
   gap: 11px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 650;
 }
 

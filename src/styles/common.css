@@ -7,7 +7,7 @@
 .eyebrow {
   display: inline-block;
   letter-spacing: .115em;
-  font-size: 10px;
+  font-size: 13px;
   color: #ed9b67;
   font-weight: 800;
   margin-bottom: 10px;
@@ -47,7 +47,7 @@
   min-height: 40px;
   border-radius: 9px;
   font-weight: 750;
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
   transition: transform .12s,background .15s,border .15s;
 }
@@ -118,7 +118,7 @@
   gap: 8px;
   color: #ed8c52;
   font-weight: 750;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .text-button:hover {

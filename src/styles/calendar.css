@@ -26,7 +26,7 @@
 }
 
 .segmented button {
-  font-size: 11px;
+  font-size: 13px;
   color: #929bab;
   border-radius: 7px;
   padding: 8px 11px;
@@ -64,7 +64,7 @@
 }
 
 .dropdown-label {
-  font-size: 9px;
+  font-size: 13px;
   color: #abb4c0;
   letter-spacing: .09em;
   font-weight: 800;
@@ -80,7 +80,7 @@
   width: 100%;
   padding: 9px;
   border-radius: 6px;
-  font-size: 11px;
+  font-size: 13px;
   color: #788499;
 }
 
@@ -108,13 +108,13 @@
 .month-day-head>span {
   padding: 14px 0;
   text-align: center;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   color: #8792a3;
 }
 
 .month-day-head .week-no-title {
-  font-size: 9px;
+  font-size: 13px;
   color: #b5bdc8;
 }
 
@@ -132,7 +132,7 @@
   align-items: center;
   justify-content: center;
   color: #b7c0cd;
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .month-cell {
@@ -172,7 +172,7 @@
   border-radius: 8px;
   display: grid;
   place-items: center;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: #5c6679;
   margin-bottom: 7px;
@@ -199,7 +199,7 @@
   gap: 5px;
   width: 100%;
   text-align: left;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 750;
   padding: 5px 6px;
   border-radius: 5px;
@@ -224,7 +224,7 @@
 
 .more-events {
   text-align: left;
-  font-size: 9px;
+  font-size: 13px;
   color: #8c97a9;
   padding: 2px 6px;
 }
@@ -233,7 +233,7 @@
   display: flex;
   gap: 12px;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 13px;
   color: #a3adba;
   margin-top: 13px;
 }
@@ -271,7 +271,7 @@
 }
 
 .time-label-head {
-  font-size: 10px;
+  font-size: 13px;
   color: #b7bfca;
   padding: 17px 8px;
 }
@@ -286,7 +286,7 @@
 }
 
 .time-head-day small {
-  font-size: 11px;
+  font-size: 13px;
   color: #8993a4;
 }
 
@@ -325,7 +325,7 @@
 .time-numbers>div {
   height: 64px;
   color: #a0a9b8;
-  font-size: 10px;
+  font-size: 13px;
   text-align: right;
   padding: 0 10px;
   transform: translateY(-6px);
@@ -363,7 +363,7 @@
   padding: 9px;
   z-index: 1;
   color: color-mix(in srgb,var(--event-color) 80%,#222);
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .timed-event strong {
@@ -374,7 +374,7 @@
 }
 
 .timed-event small {
-  font-size: 9px;
+  font-size: 13px;
   opacity: .8;
 }
 
@@ -412,7 +412,7 @@
 }
 
 .yr-weekday {
-  font-size: 9px;
+  font-size: 13px;
   color: #acb4bf;
   font-weight: 800;
   padding: 4px 0;
@@ -424,7 +424,7 @@
   width: 24px;
   height: 24px;
   color: #68768a;
-  font-size: 10px;
+  font-size: 13px;
   position: relative;
 }
 
@@ -454,7 +454,7 @@
   gap: 12px;
   margin: 0 0 20px;
   color: #96a0af;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .task-tools strong {
@@ -471,6 +471,6 @@
   border-radius: 9px;
   color: #667286;
   padding: 10px 15px;
-  font-size: 11px;
+  font-size: 13px;
   outline: none;
 }

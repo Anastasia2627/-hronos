@@ -34,7 +34,7 @@ Events, tasks, calendars and profile settings are persisted in **this browser’
 
 ## Visual direction
 
-White and very pale blue-gray surfaces; restrained warm orange brand accents; soft pastel status badges; clean cards, fine borders and compact iconography. The uploaded references guide the styling. The app uses the `DM Sans` font from Google Fonts (system fonts are a fallback).
+White and very pale blue-gray surfaces; restrained warm orange brand accents; soft pastel status badges; clean cards, fine borders and compact iconography. The uploaded references guide the styling. Typography uses locally available `Gilroy` when installed, with Google `Manrope` as a close visual fallback.
 
 ## Project structure
 
@@ -74,3 +74,13 @@ terminal you can use `git clone https://github.com/Anastasia2627/-hronos.git`.
 If GitHub says *Not Found* inside a third-party editor, check that the editor
 is signed in to the correct account and has repository access; alternatively,
 download the repository ZIP using GitHub's **Code → Download ZIP** option.
+
+## Typography and icons
+
+Gilroy is set as the first font choice. This repository does not distribute Gilroy font binaries. The browser uses Manrope if Gilroy is not installed locally. If you have a license to distribute Gilroy on the web, add your licensed .woff2 files under public/fonts and update src/styles/foundations.css with the corresponding @font-face URLs.
+
+The icon set is `lucide-react` (React components). This is compatible with the allowed HTML, CSS, and React stack.
+
+## UI code map
+
+The app stays frontend-only. `src/App.jsx` coordinates screens, `src/components` contains reusable views, `src/components/forms` contains one form per file, `src/hooks/useChronos.js` owns demo logic and local storage, and `src/styles` groups small style sheets by responsibility. No API, MongoDB, or authentication is connected yet.

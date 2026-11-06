@@ -48,8 +48,8 @@
 }
 
 .stat-label {
-  color: #929baa;
-  font-size: 11px;
+  color: #69778b;
+  font-size: 13px;
   font-weight: 650;
 }
 
@@ -62,8 +62,8 @@
 }
 
 .stat-card small {
-  font-size: 10px;
-  color: #aab2bf;
+  font-size: 13px;
+  color: #788599;
 }
 
 .stat-arrow {
@@ -97,15 +97,15 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   line-height: 1.3;
   letter-spacing: -.03em;
 }
 
 .section-header p {
-  font-size: 11px;
-  color: #a4aebc;
+  font-size: 13px;
+  color: #7e8b9d;
   margin-top: 5px;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .timeline-time {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 650;
   color: #818b9b;
   width: 66px;
@@ -187,7 +187,7 @@
 }
 
 .timeline-description strong {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 750;
   white-space: nowrap;
   overflow: hidden;
@@ -195,8 +195,8 @@
 }
 
 .timeline-description small {
-  font-size: 11px;
-  color: #9ca6b5;
+  font-size: 13px;
+  color: #7b8799;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -208,7 +208,7 @@
   justify-content: center;
   border-radius: 20px;
   padding: 5px 10px;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
   white-space: nowrap;
 }
@@ -245,7 +245,7 @@
   background: #fbfbff;
   color: #6d79b8;
   padding: 11px 14px;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .insight-strip span {
@@ -279,7 +279,7 @@
 }
 
 .mini-month strong {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .mini-month span {
@@ -303,7 +303,7 @@
 }
 
 .mini-weekday {
-  font-size: 9px;
+  font-size: 13px;
   color: #aeb6c2;
   font-weight: 800;
   text-align: center;
@@ -320,7 +320,7 @@
   height: 28px;
   width: 28px;
   border-radius: 9px;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 650;
   color: #697486;
 }
@@ -371,7 +371,7 @@
 }
 
 .quick-links button strong {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   flex: 1;
 }
