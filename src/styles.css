@@ -2,23 +2,13 @@
 @import './styles/sidebar.css';
 @import './styles/topbar.css';
 @import './styles/common.css';
-@import './styles/tasks.css';
 @import './styles/calendar.css';
 @import './styles/schedule.css';
 @import './styles/settings.css';
 @import './styles/profile-settings.css';
 @import './styles/forms.css';
 @import './styles/responsive.css';
-@import './styles/task-workspace.css';
-@import './styles/task-views.css';
-@import './styles/task-timeline.css';
 @import './styles/profile-details.css';
-
-@import './styles/project-board.css';
-@import './styles/team-space.css';
-@import './styles/team-streams.css';
-
-
 @import './styles/home.css';
 @import './styles/adaptive-pills.css';
 @import './styles/design-system.css';
@@ -27,8 +17,7 @@
 @import './styles/welcome-hero.css';
 @import './styles/welcome-calendar.css';
 @import './styles/welcome-responsive.css';
-
 @import './styles/calendar-experience.css';
-
+@import './styles/event-form.css';
 @import './styles/task-editor.css';
 @import './styles/priority-stack.css';

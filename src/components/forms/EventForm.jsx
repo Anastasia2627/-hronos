@@ -1,29 +1,62 @@
 import React, { useState } from 'react';
-import { CalendarDays, MapPin, Users, Clock3, Repeat2, Check, Trash2, Palette } from 'lucide-react';
+import { Check, Clock3, Repeat2, Link2, MapPin, Tag, Palette, Trash2, CalendarDays, Plus, X, Flag } from 'lucide-react';
+import { CAL_COLORS } from '../../data.js';
 import { TYPES } from '../../lib/shared.jsx';
-import { MiniMonth } from '../ui/MiniMonth.jsx';
 
-export function EventForm({ draft, calendars, onSave, onCancel, onDelete, isPage=false }) {
-  const [form,setForm]=useState(draft);
-  const change=(field,value)=>setForm(prev=>({...prev,[field]:value}));
-  const selected=calendars.find(c=>c.id===form.calendarId);
-  return <form className="editor-form" onSubmit={e=>{e.preventDefault();onSave(form)}}>
-    <div className="editor-type-row">{Object.entries(TYPES).map(([id,t])=>{const Icon=t.icon;return <button type="button" key={id} className={`type-choice type-${t.tone} ${form.type===id?'type-selected':''}`} onClick={()=>change('type',id)} aria-pressed={form.type===id}><Icon size={18}/>{t.label}</button>})}</div>
-    <label className="field field-title"><span>Title <em>*</em></span><input autoFocus={isPage} required placeholder="What are you planning?" value={form.title} onChange={e=>change('title',e.target.value)}/></label>
-    <div className="event-time-layout">
-      <div className="event-picker-side"><MiniMonth value={form.date} onSelect={date=>change('date',date)}/></div>
-      <div className="event-details-side">
-        <label className="field"><span><CalendarDays size={16}/> Date</span><input type="date" required value={form.date} onChange={e=>change('date',e.target.value)}/></label>
-        <div className="form-row"><label className="field"><span><Clock3 size={16}/> Start time</span><input required type="time" value={form.start} onChange={e=>change('start',e.target.value)}/></label><label className="field"><span><Clock3 size={16}/> End time</span><input required type="time" value={form.end} onChange={e=>change('end',e.target.value)}/></label></div>
-        <label className="field"><span><Palette size={16}/> Calendar</span><div className="select-with-dot"><i style={{background:selected?.color||'#f18b47'}}/><select value={form.calendarId} onChange={e=>change('calendarId',e.target.value)}>{calendars.filter(c=>!c.readOnly).map(c=><option key={c.id} value={c.id}>{c.name}</option>)}</select></div></label>
-      </div>
+const REPEATS = [
+  { id:'none', label:'Does not repeat' },
+  { id:'daily', label:'Every day' },
+  { id:'weekdays', label:'Weekdays' },
+  { id:'weekly', label:'Every week' },
+  { id:'monthly', label:'Every month' }
+];
+
+export function EventForm({ draft, calendars, categories = ['General'], onAddCategory, onSave, onCancel, onDelete }) {
+  const [form, setForm] = useState({ category:'General', endDate:draft.date, color:'', meetingLink:'', ...draft });
+  const [creatingCategory, setCreatingCategory] = useState(false);
+  const [categoryName, setCategoryName] = useState('');
+  const change = (key, val) => setForm(current => ({ ...current, [key]:val }));
+  const changeType = type => setForm(current => ({ ...current, type }));
+  const type = form.type || 'arrangement';
+  const arrangement = type === 'arrangement';
+  const task = type === 'task';
+  const calendar = calendars.find(c => c.id === form.calendarId);
+  const addCategory = () => {
+    const name = onAddCategory?.(categoryName) || categoryName.trim();
+    if (name) {change('category',name);setCategoryName('');setCreatingCategory(false);}
+  };
+
+  return <form className="editor-form event-form" onSubmit={e=>{e.preventDefault();onSave(form);}}>
+    <div className="event-kind-select" role="group" aria-label="Event type">
+      {Object.entries(TYPES).map(([key,meta])=>{const Icon=meta.icon;return <button key={key} type="button" className={`event-kind ${type === key ? 'selected' : ''} event-kind-${meta.tone}`} aria-pressed={type === key} onClick={()=>changeType(key)}><Icon size={19}/><span><strong>{meta.label}</strong><small>{meta.description}</small></span></button>;})}
     </div>
-    <details className="form-more" open={Boolean(form.id && (form.location || form.participants || form.repeat!=='none' || form.description))}><summary>More options</summary>
-      <label className="field"><span><Repeat2 size={16}/> Repeat</span><select value={form.repeat||'none'} onChange={e=>change('repeat',e.target.value)}><option value="none">Doesn't repeat</option><option value="daily">Every day</option><option value="weekly">Every week</option></select></label>
-      <label className="field"><span><MapPin size={16}/> Location or meeting link</span><input placeholder="Optional" value={form.location||''} onChange={e=>change('location',e.target.value)}/></label>
-      <label className="field"><span><Users size={16}/> Participants <small>(invitations coming with backend)</small></span><input type="text" placeholder="name@example.com" value={form.participants||''} onChange={e=>change('participants',e.target.value)}/></label>
-      <label className="field"><span>Notes</span><textarea rows={3} value={form.description||''} onChange={e=>change('description',e.target.value)} placeholder="Add details"/></label>
+
+    <label className="field event-main-title"><span>{task ? 'Task name' : arrangement ? 'Event name' : 'Reminder name'} <em>*</em></span><input required autoFocus value={form.title || ''} onChange={e=>change('title',e.target.value)} placeholder={task ? 'What needs to get done?' : arrangement ? 'What are you planning?' : 'What should I remember?'}/></label>
+
+    <div className="event-section-heading"><CalendarDays size={18}/><h3>{task ? 'Due date' : 'When'}</h3></div>
+    <div className="event-form-dates">
+      <label className="field"><span>{task ? 'Date' : 'Start date'}</span><input type="date" required value={form.date} onChange={e=>{const date=e.target.value;setForm(f=>({...f,date,endDate:arrangement && f.endDate && f.endDate>=date ? f.endDate : date}));}}/></label>
+      {arrangement && <label className="field"><span>End date</span><input type="date" min={form.date} value={form.endDate || form.date} onChange={e=>change('endDate',e.target.value)}/></label>}
+      {arrangement && <label className="field"><span><Clock3 size={15}/> Start time</span><input type="time" required value={form.start} onChange={e=>change('start',e.target.value)}/></label>}
+      {arrangement && <label className="field"><span><Clock3 size={15}/> End time</span><input type="time" required value={form.end} onChange={e=>change('end',e.target.value)}/></label>}
+      {!arrangement && <label className="field"><span><Clock3 size={15}/> {task ? 'Due time' : 'Remind me at'}</span><input type="time" value={form.start} onChange={e=>change('start',e.target.value)}/></label>}
+    </div>
+    <div className="event-form-dates event-form-secondary">
+      <label className="field"><span><CalendarDays size={15}/> Calendar</span><div className="select-with-dot"><i style={{background:calendar?.color || '#f18b47'}}/><select value={form.calendarId} onChange={e=>change('calendarId',e.target.value)}>{calendars.filter(c=>!c.readOnly).map(c=><option key={c.id} value={c.id}>{c.name}</option>)}</select></div></label>
+      <label className="field"><span><Repeat2 size={15}/> Repeat</span><select value={form.repeat || 'none'} onChange={e=>change('repeat',e.target.value)}>{REPEATS.map(r=><option key={r.id} value={r.id}>{r.label}</option>)}</select></label>
+    </div>
+    <div className="event-form-dates event-form-secondary">
+      <div className="field"><span><Tag size={15}/> Category</span><div className="event-category-select"><select value={form.category || 'General'} onChange={e=>change('category',e.target.value)}>{[...new Set([...categories,form.category || 'General'])].map(name=><option key={name}>{name}</option>)}</select><button type="button" aria-label="Create category" title="Create category" onClick={()=>setCreatingCategory(v=>!v)}><Plus size={17}/></button></div></div>
+      {(task || type === 'reminder') && <div className="event-color-choice"><span><Palette size={15}/> Color</span><div className="event-swatches" role="group" aria-label="Event color"><button type="button" className={!form.color ? 'selected' : ''} aria-label="Use calendar color" title="Calendar color" onClick={()=>change('color','')}><span style={{background:calendar?.color || '#f18b47'}}/></button>{CAL_COLORS.map(color=><button type="button" key={color} aria-label={`Set color ${color}`} aria-pressed={form.color === color} className={form.color === color ? 'selected' : ''} onClick={()=>change('color',color)}><span style={{background:color}}/></button>)}</div></div>}
+    </div>
+    {creatingCategory && <div className="new-category-line"><input value={categoryName} onChange={e=>setCategoryName(e.target.value)} placeholder="New category name" aria-label="New category name" onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();addCategory();}}}/><button className="btn btn-primary" type="button" onClick={addCategory}>Add</button><button type="button" aria-label="Cancel new category" onClick={()=>setCreatingCategory(false)}><X size={17}/></button></div>}
+
+    {arrangement && <label className="field event-link-field"><span><Link2 size={16}/> Meeting link</span><input type="url" value={form.meetingLink || ''} onChange={e=>change('meetingLink',e.target.value)} placeholder="https://meet.google.com/..."/></label>}
+    <details className="form-more event-details"><summary>More details</summary>
+      {arrangement && <label className="field"><span><MapPin size={16}/> Location <small>optional</small></span><input value={form.location || ''} onChange={e=>change('location',e.target.value)} placeholder="Address, room or venue"/></label>}
+      <label className="field"><span>{task ? 'Task description' : arrangement ? 'Agenda / notes' : 'Reminder details'}</span><textarea rows={3} value={form.description || ''} onChange={e=>change('description',e.target.value)} placeholder="Add details if needed"/></label>
     </details>
-    <div className="form-actions">{onDelete&&<button className="btn btn-outline-danger" type="button" onClick={onDelete}><Trash2 size={16}/> Delete</button>}<div className="form-buttons"><button type="button" className="btn btn-secondary" onClick={onCancel}>Cancel</button><button type="submit" className="btn btn-primary"><Check size={17}/>{draft.id?'Save changes':'Create event'}</button></div></div>
+    <div className="form-actions">{onDelete && <button className="btn btn-outline-danger" type="button" onClick={onDelete}><Trash2 size={16}/> Delete</button>}
+      <div className="form-buttons"><button type="button" className="btn btn-secondary" onClick={onCancel}>Cancel</button><button className="btn btn-primary" type="submit"><Check size={17}/>{draft.id ? 'Save changes' : 'Create'}</button></div></div>
   </form>;
 }

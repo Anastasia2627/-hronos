@@ -64,7 +64,7 @@
 .task-editor-more summary span svg { color: #8898ab; }
 .task-editor-more-chevron { transition: transform .16s; }
 .task-editor-more[open] .task-editor-more-chevron { transform: rotate(180deg); }
-.task-editor-extra { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; padding: 14px 0 4px; animation: task-editor-reveal .16s ease both; }
+.task-editor-extra { display: grid; grid-template-columns: 1fr; gap: 15px; padding: 14px 0 4px; animation: task-editor-reveal .16s ease both; }
 .task-editor-color-row { grid-column: 1/-1; }
 .task-editor-colors { display: flex; flex-wrap: wrap; gap: 9px; padding: 5px 1px; }
 .task-editor-colors button { display: grid; place-items: center; width: 28px; height: 28px; border: 2px solid #fff; border-radius: 50%; background: var(--swatch); color: white; box-shadow: 0 0 0 1px #dfe4ed; transition: transform .16s, box-shadow .16s; }

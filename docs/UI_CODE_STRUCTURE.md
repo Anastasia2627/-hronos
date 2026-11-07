@@ -1,30 +1,37 @@
-# Chronos UI — where things live
+# Chronos UI · file layout
 
-Frontend only. React state and demo data are local, no backend or fake network responses.
+Chronos is a calendar-first frontend demo. Standalone Tasks, Projects and Team space pages were removed as duplicated navigational destinations.
 
-## Components
+## React
 
-- `src/App.jsx` — screen selection and shared handlers.
-- `src/hooks/useChronos.js` — local UI state and actions.
-- `src/data.js` — models, sample data and date helpers.
-- `src/components/TeamSpacePage.jsx` — Team space filters and composition.
-- `src/components/workspace/TeamStreamColumn.jsx` — one activity column, drop target.
-- `src/components/workspace/TeamStreamCard.jsx` — single task and status control.
-- Other sections are split under `src/components/`, with `forms/`, `home/`, `settings/`, and `workspace/`.
+- `src/App.jsx` — active pages and shared props; no separate task/project/team routes.
+- `src/hooks/useChronos.js` — event, calendar and task data; filters, recurrence, categories and local members.
+- `src/lib/shared.jsx` — exact assignment event types, occurrence calculations and nav.
+- `src/components/Sidebar.jsx` — calendar selector/editor and compact task list.
+- `src/components/CalendarSidebar.jsx` — month picker, day's events and local calendar members.
+- `src/components/CalendarPage.jsx` — calendar views plus lightweight filter popover.
+- `src/components/forms/EventForm.jsx` — fields specific to Arrangement / Reminder / Task events.
+- `src/components/forms/TaskForm.jsx` — compact task editor, recurrence, category and color.
+- `src/components/home/` — Home entry points, priority stack, next tasks.
 
-## CSS
+## CSS ownership
 
-- `src/styles/foundations.css` — variables, fonts and basic resets.
-- `src/styles/design-system.css` — shared buttons, typography, navigation and form appearance.
-- Screen-specific CSS files (e.g. `team-space.css`, `team-streams.css`) own **layout**; do not redefine the same grid in global CSS.
-- `src/styles/motion.css` — entrance, hover, press and reduced-motion handling.
-- `src/styles.css` — imports; do not accumulate `*-polish.css` or `*-fix.css` layers.
+- `styles/foundations.css`, `styles/design-system.css` — tokens and shared hierarchy.
+- `styles/sidebar.css`, `styles/responsive.css` — navigation and responsive layout.
+- `styles/calendar.css`, `styles/calendar-experience.css`, `styles/event-form.css` — calendar, left panel and event form.
+- `styles/forms.css`, `styles/task-editor.css` — shared form controls and task editor.
+- `styles/home.css`, `styles/priority-stack.css` — Home content.
+- `styles/motion.css` — purposeful feedback, including reduced-motion behavior.
 
-## Regression guardrails
+Avoid adding global `*-fix.css` or `*-polish.css` overrides. Edit the owning component and stylesheet instead.
 
-1. Do not reintroduce a nested sidebar column in Team space without mounting the matching sidebar component.
-2. Avoid fixed narrow widths on columns. Use a single-column fallback when cards cannot fit, not horizontal text squeezing.
-3. All action controls must work without hover and have visible keyboard focus.
-4. Keep inactive states readable, not faint. Skeleton placeholders should be implemented for **real API loading** when a backend exists, not for a simulated pause.
-5. Verify 390, 768, 1024, 1440 px; test adding and editing a task, changing status, moving task between groups, searching and filtering.
-6. Run an actual build and browser interaction test when package dependencies are available. Static JSX/CSS validation is not a substitute.
+## Regression check
+
+1. Calendar selection and visibility, including permanently visible Personal calendar.
+2. Arrangement, Reminder, Task creation and editing from the two required entry points.
+3. Recurrence across month/year boundaries (including dates like January 31).
+4. Category creation and task color persisted in localStorage.
+5. Local-only member management restricted to selected writable calendar.
+6. Task checklist completes a one-off task; recurring tasks advance to next occurrence.
+7. Home, Calendar, My day, Profile and Settings on mobile, tablet and desktop.
+8. Run Vite build and browser interaction tests when dependencies are available. Static syntax checks are not equivalent.
